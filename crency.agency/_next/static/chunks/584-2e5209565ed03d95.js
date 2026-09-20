@@ -32,7 +32,7 @@
                             var i, r, o, s;
                             this.value = (i = this.value, r = this.to, o = 60 * this.lerp, (1 - (s = 1 - Math.exp(-o * t))) * i + s * r), Math.round(this.value) === Math.round(this.to) && (this.value = this.to, e = !0)
                         } else this.value = this.to, e = !0;
-                        e && this.stop(), this.onUpdate ? .(this.value, e)
+                        e && this.stop(), this.onUpdate ?.(this.value, e)
                     }
                     stop() {
                         this.isRunning = !1
@@ -44,7 +44,7 @@
                         onStart: o,
                         onUpdate: s
                     }) {
-                        this.from = this.value = t, this.to = e, this.lerp = i, this.duration = r, this.easing = n, this.currentTime = 0, this.isRunning = !0, o ? .(), this.onUpdate = s
+                        this.from = this.value = t, this.to = e, this.lerp = i, this.duration = r, this.easing = n, this.currentTime = 0, this.isRunning = !0, o ?.(), this.onUpdate = s
                     }
                 },
                 s = class {
@@ -69,7 +69,7 @@
                         }(this.resize, r), this.wrapper instanceof Window ? window.addEventListener("resize", this.debouncedResize) : (this.wrapperResizeObserver = new ResizeObserver(this.debouncedResize), this.wrapperResizeObserver.observe(this.wrapper)), this.contentResizeObserver = new ResizeObserver(this.debouncedResize), this.contentResizeObserver.observe(this.content)), this.resize()
                     }
                     destroy() {
-                        this.wrapperResizeObserver ? .disconnect(), this.contentResizeObserver ? .disconnect(), this.wrapper === window && this.debouncedResize && window.removeEventListener("resize", this.debouncedResize)
+                        this.wrapperResizeObserver ?.disconnect(), this.contentResizeObserver ?.disconnect(), this.wrapper === window && this.debouncedResize && window.removeEventListener("resize", this.debouncedResize)
                     }
                     resize = () => {
                         this.onWrapperResize(), this.onContentResize()
@@ -91,15 +91,15 @@
                     events = {};
                     emit(t, ...e) {
                         let i = this.events[t] || [];
-                        for (let t = 0, r = i.length; t < r; t++) i[t] ? .(...e)
+                        for (let t = 0, r = i.length; t < r; t++) i[t] ?.(...e)
                     }
                     on(t, e) {
                         return this.events[t] ? this.events[t].push(e) : this.events[t] = [e], () => {
-                            this.events[t] = this.events[t] ? .filter(t => e !== t)
+                            this.events[t] = this.events[t] ?.filter(t => e !== t)
                         }
                     }
                     off(t, e) {
-                        this.events[t] = this.events[t] ? .filter(t => e !== t)
+                        this.events[t] = this.events[t] ?.filter(t => e !== t)
                     }
                     destroy() {
                         this.events = {}
@@ -309,7 +309,7 @@
                     ["hidden", "clip"].includes(this.overflow) ? this.internalStop() : this.internalStart()
                 }
                 onTransitionEnd = t => {
-                    t.propertyName ? .includes("overflow") && t.target === this.rootElement && this.checkOverflow()
+                    t.propertyName ?.includes("overflow") && t.target === this.rootElement && this.checkOverflow()
                 };
                 setScroll(t) {
                     this.isHorizontal ? this.options.wrapper.scrollTo({
@@ -340,7 +340,7 @@
                 isTouchOnSelectionHandle(t) {
                     let e = window.getSelection();
                     if (!e || e.isCollapsed || 0 === e.rangeCount) return !1;
-                    let i = t.targetTouches[0] ? ? t.changedTouches[0];
+                    let i = t.targetTouches[0] ?? t.changedTouches[0];
                     if (!i) return !1;
                     let r = e.getRangeAt(0).getClientRects();
                     if (0 === r.length) return !1;
@@ -377,7 +377,7 @@
                     l = l.slice(0, l.indexOf(this.rootElement));
                     let c = this.options.prevent,
                         u = Math.abs(e) >= Math.abs(i) ? "horizontal" : "vertical";
-                    if (l.find(t => t instanceof HTMLElement && ("function" == typeof c && c ? .(t) || t.hasAttribute ? .("data-lenis-prevent") || "vertical" === u && t.hasAttribute ? .("data-lenis-prevent-vertical") || "horizontal" === u && t.hasAttribute ? .("data-lenis-prevent-horizontal") || n && t.hasAttribute ? .("data-lenis-prevent-touch") || o && t.hasAttribute ? .("data-lenis-prevent-wheel") || this.options.allowNestedScroll && this.hasNestedScroll(t, {
+                    if (l.find(t => t instanceof HTMLElement && ("function" == typeof c && c ?.(t) || t.hasAttribute ?.("data-lenis-prevent") || "vertical" === u && t.hasAttribute ?.("data-lenis-prevent-vertical") || "horizontal" === u && t.hasAttribute ?.("data-lenis-prevent-horizontal") || n && t.hasAttribute ?.("data-lenis-prevent-touch") || o && t.hasAttribute ?.("data-lenis-prevent-wheel") || this.options.allowNestedScroll && this.hasNestedScroll(t, {
                             deltaX: e,
                             deltaY: i
                         })))) return;
@@ -467,7 +467,7 @@
                     else if ("string" == typeof d && ["bottom", "right", "end"].includes(d)) d = this.limit;
                     else {
                         let t = null;
-                        if ("string" == typeof d ? (t = d.startsWith("#") ? document.getElementById(d.slice(1)) : document.querySelector(d)) || ("#top" === d ? d = 0 : console.warn("Lenis: Target not found", d)) : d instanceof HTMLElement && d ? .nodeType && (t = d), t) {
+                        if ("string" == typeof d ? (t = d.startsWith("#") ? document.getElementById(d.slice(1)) : document.querySelector(d)) || ("#top" === d ? d = 0 : console.warn("Lenis: Target not found", d)) : d instanceof HTMLElement && d ?.nodeType && (t = d), t) {
                             if (this.options.wrapper !== window) {
                                 let t = this.rootElement.getBoundingClientRect();
                                 g -= this.isHorizontal ? t.left : t.top
@@ -489,11 +489,11 @@
                             }
                         } else d = n(0, d, this.limit);
                         if (d === this.targetScroll) {
-                            c ? .(this), u ? .(this);
+                            c ?.(this), u ?.(this);
                             return
                         }
-                        if (this.userData = f ? ? {}, i) {
-                            this.animatedScroll = this.targetScroll = d, this.setScroll(this.scroll), this.reset(), this.preventNextNativeScrollEvent(), this.emit(), u ? .(this), this.userData = {}, requestAnimationFrame(() => {
+                        if (this.userData = f ?? {}, i) {
+                            this.animatedScroll = this.targetScroll = d, this.setScroll(this.scroll), this.reset(), this.preventNextNativeScrollEvent(), this.emit(), u ?.(this), this.userData = {}, requestAnimationFrame(() => {
                                 this.dispatchScrollendEvent()
                             });
                             return
@@ -503,10 +503,10 @@
                             easing: l,
                             lerp: s,
                             onStart: () => {
-                                r && (this.isLocked = !0), this.isScrolling = "smooth", c ? .(this)
+                                r && (this.isLocked = !0), this.isScrolling = "smooth", c ?.(this)
                             },
                             onUpdate: (t, e) => {
-                                this.isScrolling = "smooth", this.lastVelocity = this.velocity, this.velocity = t - this.animatedScroll, this.direction = Math.sign(this.velocity), this.animatedScroll = t, this.setScroll(this.scroll), o && (this.targetScroll = t), e || this.emit(), e && (this.reset(), this.emit(), u ? .(this), this.userData = {}, requestAnimationFrame(() => {
+                                this.isScrolling = "smooth", this.lastVelocity = this.velocity, this.velocity = t - this.animatedScroll, this.direction = Math.sign(this.velocity), this.animatedScroll = t, this.setScroll(this.scroll), o && (this.targetScroll = t), e || this.emit(), e && (this.reset(), this.emit(), u ?.(this), this.userData = {}, requestAnimationFrame(() => {
                                     this.dispatchScrollendEvent()
                                 }), this.preventNextNativeScrollEvent())
                             }
@@ -525,7 +525,7 @@
                     let r, n, o, s, a, l, c, u, h, p, f, d, g, v, m, y, w = Date.now();
                     t._lenis || (t._lenis = {});
                     let x = t._lenis;
-                    if (w - (x.time ? ? 0) > 2e3) {
+                    if (w - (x.time ?? 0) > 2e3) {
                         x.time = Date.now();
                         let e = window.getComputedStyle(t);
                         if (x.computedStyle = e, r = ["auto", "overlay", "scroll"].includes(e.overflowX), n = ["auto", "overlay", "scroll"].includes(e.overflowY), a = ["auto"].includes(e.overscrollBehaviorX), l = ["auto"].includes(e.overscrollBehaviorY), x.hasOverflowX = r, x.hasOverflowY = n, !(r || n)) return !1;
@@ -551,7 +551,7 @@
                 }
                 get actualScroll() {
                     let t = this.options.wrapper;
-                    return this.isHorizontal ? t.scrollX ? ? t.scrollLeft : t.scrollY ? ? t.scrollTop
+                    return this.isHorizontal ? t.scrollX ?? t.scrollLeft : t.scrollY ?? t.scrollTop
                 }
                 get scroll() {
                     var t;
