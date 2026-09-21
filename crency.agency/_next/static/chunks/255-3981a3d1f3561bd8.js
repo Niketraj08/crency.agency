@@ -2103,7 +2103,7 @@
                     return r
                 }
             });
-            let r = "function" == typeof reportError ? reportError : e => {
+            let r = e => {
                 globalThis.console.error(e)
             };
             ("function" == typeof t.default || "object" == typeof t.default && null !== t.default) && void 0 === t.default.__esModule && (Object.defineProperty(t.default, "__esModule", {
