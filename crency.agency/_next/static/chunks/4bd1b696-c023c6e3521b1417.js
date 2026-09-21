@@ -6814,8 +6814,9 @@
             }
 
             function ss(e, n) {
-                return n = si(n), si(e) === n
-            }
+    var a = si(e), b = si(n);
+    return a === b || a.trim() === b.trim() || a.replace(/\s+/g, " ").trim() === b.replace(/\s+/g, " ").trim();
+  }
 
             function sc(e, n, t, r, l, a) {
                 switch (t) {
@@ -7323,7 +7324,7 @@
             function sF(e) {
                 for (; null != e; e = e.nextSibling) {
                     var n = e.nodeType;
-                    if (1 === n || 3 === n) break;
+                    if (1 === n) break; if (3 === n) { if (e.nodeValue && e.nodeValue.trim().length > 0) break; continue; }
                     if (8 === n) {
                         if ("$" === (n = e.data) || "$!" === n || "$?" === n || "$~" === n || "&" === n || "F!" === n || "F" === n) break;
                         if ("/$" === n || "/&" === n) return null
