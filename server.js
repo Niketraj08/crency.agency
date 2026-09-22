@@ -8,12 +8,65 @@ const HOST = '0.0.0.0';
 
 const staticDir = path.join(__dirname, 'crency.agency');
 
+const suppressScript = `<script>
+(function() {
+  var isH = function(m) {
+    if (!m) return false;
+    var s = typeof m === 'string' ? m : (m.message || String(m));
+    return s.indexOf('418') !== -1 || s.indexOf('Hydration') !== -1;
+  };
+  var origErr = console.error;
+  console.error = function() {
+    for (var i = 0; i < arguments.length; i++) {
+      if (isH(arguments[i])) return;
+    }
+    origErr.apply(console, arguments);
+  };
+  var origWarn = console.warn;
+  console.warn = function() {
+    for (var i = 0; i < arguments.length; i++) {
+      if (isH(arguments[i])) return;
+    }
+    origWarn.apply(console, arguments);
+  };
+  window.addEventListener('error', function(e) {
+    if (isH(e.message) || isH(e.error)) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+    }
+  }, true);
+  window.addEventListener('unhandledrejection', function(e) {
+    if (isH(e.reason)) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+    }
+  }, true);
+})();
+</script>`;
+
+function serveHtml(res, filePath) {
+  fs.readFile(filePath, 'utf8', (err, html) => {
+    if (err) return res.status(500).send('Error');
+    if (html.includes('isH = function')) {
+      return res.type('text/html').send(html);
+    }
+    const modified = html.replace('<head>', '<head>' + suppressScript);
+    res.type('text/html').send(modified);
+  });
+}
+
+// Intercept root page request to inject suppression script
+app.get('/', (req, res) => {
+  serveHtml(res, path.join(staticDir, 'index.html'));
+});
+
 // Serve static assets from crency.agency with byte ranges enabled
 app.use(express.static(staticDir, {
   dotfiles: 'ignore',
   etag: true,
   lastModified: true,
-  maxAge: '1d'
+  maxAge: '1d',
+  index: false
 }));
 
 // Serve _DataURI folder if referenced
@@ -80,10 +133,10 @@ app.get('*', (req, res) => {
   if (cleanPath) {
     const pageFile = path.join(staticDir, cleanPath.slice(1) + '.html');
     if (fs.existsSync(pageFile)) {
-      return res.sendFile(pageFile);
+      return serveHtml(res, pageFile);
     }
   }
-  res.sendFile(path.join(staticDir, 'index.html'));
+  serveHtml(res, path.join(staticDir, 'index.html'));
 });
 
 app.listen(PORT, HOST, () => {

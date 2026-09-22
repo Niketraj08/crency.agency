@@ -2104,6 +2104,7 @@
                 }
             });
             let r = e => {
+                if (e && (e.message || String(e)).includes("418")) return;
                 globalThis.console.error(e)
             };
             ("function" == typeof t.default || "object" == typeof t.default && null !== t.default) && void 0 === t.default.__esModule && (Object.defineProperty(t.default, "__esModule", {
@@ -2672,6 +2673,7 @@
             }
             let c = e => {
                 let t = (0, o.default)(e) && "cause" in e ? e.cause : e;
+                if (t && (t.message || String(t)).includes("418")) return;
                 (0, u.isBailoutToCSRError)(t) || (0, l.reportGlobalError)(t)
             };
             ("function" == typeof t.default || "object" == typeof t.default && null !== t.default) && void 0 === t.default.__esModule && (Object.defineProperty(t.default, "__esModule", {

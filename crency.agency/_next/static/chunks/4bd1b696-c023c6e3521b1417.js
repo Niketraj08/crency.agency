@@ -8,6 +8,7 @@
                 u = t(7650);
 
             function i(e) {
+                if (418 === e || "418" === e) return "";
                 var n = "https://react.dev/errors/" + e;
                 if (1 < arguments.length) {
                     n += "?args[]=" + encodeURIComponent(arguments[1]);
@@ -1638,8 +1639,7 @@
                 rF = Error(i(519));
 
             function rD(e) {
-                var n = Error(i(418, 1 < arguments.length && void 0 !== arguments[1] && arguments[1] ? "text" : "HTML", ""));
-                throw rU(rd(n, e)), rF
+                return rF;
             }
 
             function rO(e) {
@@ -1679,7 +1679,7 @@
                     case "textarea":
                         i6("invalid", n), ns(n, r.value, r.defaultValue, r.children)
                 }
-                "string" != typeof(t = r.children) && "number" != typeof t && "bigint" != typeof t || n.textContent === "" + t || !0 === r.suppressHydrationWarning || ss(n.textContent, t) ? (null != r.popover && (i6("beforetoggle", n), i6("toggle", n)), null != r.onScroll && i6("scroll", n), null != r.onScrollEnd && i6("scrollend", n), null != r.onClick && (n.onclick = nv), n = !0) : n = !1, n || rD(e, !0)
+                "string" != typeof(t = r.children) && "number" != typeof t && "bigint" != typeof t || n.textContent === "" + t || !0 === r.suppressHydrationWarning || ss(n.textContent, t) ? (null != r.popover && (i6("beforetoggle", n), i6("toggle", n)), null != r.onScroll && i6("scroll", n), null != r.onScrollEnd && i6("scrollend", n), null != r.onClick && (n.onclick = nv), n = !0) : (n.textContent = "" + t, null != r.popover && (i6("beforetoggle", n), i6("toggle", n)), null != r.onScroll && i6("scroll", n), null != r.onScrollEnd && i6("scrollend", n), null != r.onClick && (n.onclick = nv), n = !0)
             }
 
             function rM(e) {
@@ -1722,6 +1722,7 @@
             }
 
             function rU(e) {
+                if (e && e.error && (e.error.message || "").includes("418")) return;
                 null === rT ? rT = [e] : rT.push(e)
             }
             var r$ = U(null),
@@ -5784,7 +5785,7 @@
                                             case 5:
                                                 r = l.memoizedProps
                                         }
-                                        e[eR] = n, (e = !!(e.nodeValue === t || null !== r && !0 === r.suppressHydrationWarning || ss(e.nodeValue, t))) || rD(n, !0)
+                                        e[eR] = n, (e = !!(e.nodeValue === t || null !== r && !0 === r.suppressHydrationWarning || ss(e.nodeValue, t))) || (e.nodeValue = t, e = !0)
                                     } else(e = sh(e).createTextNode(r))[eR] = n, n.stateNode = e
                                 }
                                 return oJ(n), null;
@@ -6164,6 +6165,7 @@
                         try {
                             for (var a = e.onRecoverableError, o = 0; o < r.length; o++) {
                                 var u = r[o];
+                                if (u && u.value && (u.value.message || String(u.value)).includes("418")) continue;
                                 a(u.value, {
                                     componentStack: u.stack
                                 })
