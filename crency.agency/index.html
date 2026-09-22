@@ -424,6 +424,735 @@
             </div>
             <h2 class="hidden">View all</h2>
         </section>
+
+        <!-- Client Testimonials & Social Proof Section -->
+        <section id="testimonials" class="section testimonials" aria-label="Client Testimonials">
+            <style>
+                .section.testimonials {
+                    position: relative;
+                    padding: 100px 0 120px;
+                    background: radial-gradient(circle at 50% 10%, rgba(76, 52, 135, 0.22) 0%, rgba(16, 5, 41, 0) 65%), #100529;
+                    color: #fff;
+                    overflow: hidden;
+                    border-top: 1px solid rgba(211, 197, 246, 0.1);
+                    border-bottom: 1px solid rgba(211, 197, 246, 0.1);
+                }
+                .testimonials-container {
+                    width: 100%;
+                    max-width: 1320px;
+                    margin: 0 auto;
+                    padding: 0 24px;
+                    box-sizing: border-box;
+                }
+                .testimonials-header {
+                    text-align: center;
+                    max-width: 780px;
+                    margin: 0 auto 56px;
+                }
+                .testimonials-badge {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 7px 18px;
+                    background: rgba(211, 197, 246, 0.1);
+                    border: 1px solid rgba(211, 197, 246, 0.2);
+                    border-radius: 9999px;
+                    margin-bottom: 24px;
+                }
+                .testimonials-badge-dot {
+                    width: 8px;
+                    height: 8px;
+                    background: #C2EC40;
+                    border-radius: 50%;
+                    box-shadow: 0 0 10px #C2EC40;
+                }
+                .testimonials-badge-text {
+                    font-size: 13px;
+                    font-weight: 600;
+                    letter-spacing: 0.08em;
+                    text-transform: uppercase;
+                    color: #D3C5F6;
+                }
+                .testimonials-title {
+                    font-size: clamp(32px, 4.5vw, 56px);
+                    line-height: 1.05;
+                    font-weight: 700;
+                    color: #fff;
+                    margin: 0 0 18px;
+                    letter-spacing: -0.02em;
+                }
+                .testimonials-title .testimonials-highlight {
+                    color: #FE8FE5;
+                    font-style: italic;
+                }
+                .testimonials-sub {
+                    font-size: clamp(16px, 1.8vw, 19px);
+                    line-height: 1.55;
+                    color: rgba(211, 197, 246, 0.78);
+                    margin: 0;
+                }
+
+                /* Client Logos Strip */
+                .testimonials-logos-card {
+                    background: rgba(21, 7, 52, 0.6);
+                    border: 1px solid rgba(211, 197, 246, 0.12);
+                    border-radius: 20px;
+                    padding: 28px 32px;
+                    margin-bottom: 64px;
+                    backdrop-filter: blur(12px);
+                }
+                .testimonials-logos-label {
+                    text-align: center;
+                    font-size: 12px;
+                    font-weight: 700;
+                    letter-spacing: 0.12em;
+                    color: rgba(211, 197, 246, 0.5);
+                    text-transform: uppercase;
+                    margin: 0 0 24px;
+                }
+                .testimonials-logos-grid {
+                    display: grid;
+                    grid-template-columns: repeat(6, 1fr);
+                    gap: 20px;
+                    align-items: center;
+                }
+                @media (max-width: 991px) {
+                    .testimonials-logos-grid {
+                        grid-template-columns: repeat(3, 1fr);
+                        gap: 24px 16px;
+                    }
+                }
+                @media (max-width: 560px) {
+                    .testimonials-logos-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 20px 12px;
+                    }
+                }
+                .testimonials-logo-item {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    padding: 10px 14px;
+                    border-radius: 12px;
+                    background: rgba(255, 255, 255, 0.02);
+                    border: 1px solid rgba(255, 255, 255, 0.05);
+                    transition: all 0.3s ease;
+                }
+                .testimonials-logo-item:hover {
+                    background: rgba(211, 197, 246, 0.08);
+                    border-color: rgba(194, 236, 64, 0.3);
+                    transform: translateY(-2px);
+                }
+                .testimonials-logo-icon {
+                    width: 22px;
+                    height: 22px;
+                    flex-shrink: 0;
+                }
+                .testimonials-logo-text {
+                    font-size: 15px;
+                    font-weight: 700;
+                    color: rgba(255, 255, 255, 0.85);
+                    letter-spacing: -0.01em;
+                    white-space: nowrap;
+                }
+
+                /* Carousel Shell */
+                .testimonials-carousel-wrapper {
+                    position: relative;
+                }
+                .testimonials-carousel {
+                    overflow: hidden;
+                    border-radius: 28px;
+                }
+                .testimonials-track {
+                    display: flex;
+                    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+                    will-change: transform;
+                }
+                .testimonials-slide {
+                    min-width: 100%;
+                    box-sizing: border-box;
+                    padding: 4px;
+                }
+                .testimonial-card {
+                    background: linear-gradient(135deg, rgba(32, 13, 76, 0.75) 0%, rgba(18, 6, 44, 0.85) 100%);
+                    border: 1px solid rgba(211, 197, 246, 0.18);
+                    border-radius: 28px;
+                    padding: 48px;
+                    box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.5);
+                    backdrop-filter: blur(16px);
+                    position: relative;
+                }
+                @media (max-width: 767px) {
+                    .testimonial-card {
+                        padding: 28px 22px;
+                        border-radius: 20px;
+                    }
+                }
+                .testimonial-top-row {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    gap: 16px;
+                    margin-bottom: 28px;
+                }
+                .testimonial-service-tag {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 6px;
+                    font-size: 12px;
+                    font-weight: 700;
+                    letter-spacing: 0.08em;
+                    text-transform: uppercase;
+                    padding: 6px 14px;
+                    border-radius: 9999px;
+                    background: rgba(194, 236, 64, 0.12);
+                    color: #C2EC40;
+                    border: 1px solid rgba(194, 236, 64, 0.3);
+                }
+                .testimonial-service-tag.pink {
+                    background: rgba(254, 143, 229, 0.12);
+                    color: #FE8FE5;
+                    border-color: rgba(254, 143, 229, 0.3);
+                }
+                .testimonial-service-tag.yellow {
+                    background: rgba(251, 212, 2, 0.12);
+                    color: #FBD402;
+                    border-color: rgba(251, 212, 2, 0.3);
+                }
+                .testimonial-service-tag.orange {
+                    background: rgba(255, 139, 73, 0.12);
+                    color: #FF8B49;
+                    border-color: rgba(255, 139, 73, 0.3);
+                }
+                .testimonial-service-tag.lavender {
+                    background: rgba(211, 197, 246, 0.12);
+                    color: #D3C5F6;
+                    border-color: rgba(211, 197, 246, 0.3);
+                }
+                .testimonial-stats-badge {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    background: rgba(255, 255, 255, 0.06);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    padding: 6px 14px;
+                    border-radius: 9999px;
+                    font-size: 13px;
+                    font-weight: 600;
+                    color: #fff;
+                }
+                .testimonial-stars {
+                    display: flex;
+                    gap: 3px;
+                    color: #FBD402;
+                }
+                .testimonial-quote {
+                    font-size: clamp(20px, 2.4vw, 30px);
+                    line-height: 1.35;
+                    font-weight: 500;
+                    color: #F3EFFF;
+                    margin: 0 0 36px;
+                    letter-spacing: -0.015em;
+                }
+                .testimonial-author-row {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                    padding-top: 24px;
+                    border-top: 1px solid rgba(211, 197, 246, 0.12);
+                }
+                .testimonial-author-info {
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                }
+                .testimonial-author-avatar {
+                    width: 52px;
+                    height: 52px;
+                    border-radius: 50%;
+                    background: linear-gradient(135deg, #4C3487 0%, #150734 100%);
+                    border: 2px solid #C2EC40;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: 700;
+                    font-size: 17px;
+                    color: #fff;
+                    letter-spacing: 0.02em;
+                    flex-shrink: 0;
+                }
+                .testimonial-author-avatar.pink {
+                    border-color: #FE8FE5;
+                }
+                .testimonial-author-avatar.yellow {
+                    border-color: #FBD402;
+                }
+                .testimonial-author-avatar.orange {
+                    border-color: #FF8B49;
+                }
+                .testimonial-author-avatar.lavender {
+                    border-color: #D3C5F6;
+                }
+                .testimonial-author-name {
+                    font-size: 18px;
+                    font-weight: 700;
+                    color: #fff;
+                    margin: 0 0 4px;
+                }
+                .testimonial-author-title {
+                    font-size: 14px;
+                    color: rgba(211, 197, 246, 0.72);
+                    margin: 0;
+                }
+                .testimonial-verified-badge {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 6px;
+                    font-size: 12px;
+                    font-weight: 600;
+                    color: #C2EC40;
+                    background: rgba(194, 236, 64, 0.08);
+                    padding: 6px 12px;
+                    border-radius: 9999px;
+                    border: 1px solid rgba(194, 236, 64, 0.2);
+                }
+
+                /* Carousel Controls */
+                .testimonials-controls-row {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-top: 32px;
+                    padding: 0 8px;
+                }
+                .testimonials-dots-list {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+                .testimonials-dot {
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 9999px;
+                    background: rgba(211, 197, 246, 0.25);
+                    border: none;
+                    cursor: pointer;
+                    padding: 0;
+                    transition: all 0.3s ease;
+                }
+                .testimonials-dot.is-active {
+                    width: 38px;
+                    background: #C2EC40;
+                    box-shadow: 0 0 12px rgba(194, 236, 64, 0.5);
+                }
+                .testimonials-arrows {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                }
+                .testimonials-arrow-btn {
+                    width: 52px;
+                    height: 52px;
+                    border-radius: 50%;
+                    background: rgba(211, 197, 246, 0.08);
+                    border: 1.5px solid rgba(211, 197, 246, 0.2);
+                    color: #fff;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    transition: all 0.25s ease;
+                }
+                .testimonials-arrow-btn:hover {
+                    background: #C2EC40;
+                    color: #100529;
+                    border-color: #C2EC40;
+                    transform: scale(1.05);
+                }
+                .testimonials-arrow-btn svg {
+                    width: 20px;
+                    height: 20px;
+                }
+            </style>
+
+            <div class="testimonials-container">
+                <!-- Header -->
+                <div class="testimonials-header">
+                    <div class="testimonials-badge">
+                        <span class="testimonials-badge-dot"></span>
+                        <span class="testimonials-badge-text">Client Testimonials &amp; Social Proof</span>
+                    </div>
+                    <h2 class="testimonials-title">
+                        Real words from <span class="testimonials-highlight">founders</span> who built with us
+                    </h2>
+                    <p class="testimonials-sub">
+                        From venture-backed startups to enterprise software teams, see why product leaders choose AstraCognix Solutions to launch high-performance digital products.
+                    </p>
+                </div>
+
+                <!-- Company Logos Bar -->
+                <div class="testimonials-logos-card">
+                    <p class="testimonials-logos-label">TRUSTED BY LEADERSHIP TEAMS ACROSS FINTECH, AI &amp; HEALTHCARE</p>
+                    <div class="testimonials-logos-grid">
+                        <div class="testimonials-logo-item">
+                            <svg class="testimonials-logo-icon" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="#FE8FE5" stroke-width="2.2"/>
+                                <path d="M7 12H17M12 7V17" stroke="#FE8FE5" stroke-width="2.2" stroke-linecap="round"/>
+                            </svg>
+                            <span class="testimonials-logo-text">NexaHealth</span>
+                        </div>
+                        <div class="testimonials-logo-item">
+                            <svg class="testimonials-logo-icon" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="8" stroke="#C2EC40" stroke-width="2.2"/>
+                                <ellipse cx="12" cy="12" rx="11" ry="4" stroke="#C2EC40" stroke-width="1.8" transform="rotate(-25 12 12)"/>
+                            </svg>
+                            <span class="testimonials-logo-text">OrbitPay</span>
+                        </div>
+                        <div class="testimonials-logo-item">
+                            <svg class="testimonials-logo-icon" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2L19 6V18L12 22L5 18V6L12 2Z" stroke="#FBD402" stroke-width="2.2"/>
+                                <circle cx="12" cy="12" r="3" fill="#FBD402"/>
+                            </svg>
+                            <span class="testimonials-logo-text">SynthAI</span>
+                        </div>
+                        <div class="testimonials-logo-item">
+                            <svg class="testimonials-logo-icon" viewBox="0 0 24 24" fill="none">
+                                <path d="M4 16L12 4L20 16H4Z" stroke="#FF8B49" stroke-width="2.2" stroke-linejoin="round"/>
+                                <path d="M8 16L12 10L16 16" stroke="#FF8B49" stroke-width="2"/>
+                            </svg>
+                            <span class="testimonials-logo-text">Veloce</span>
+                        </div>
+                        <div class="testimonials-logo-item">
+                            <svg class="testimonials-logo-icon" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 18C4 18 2 16 2 13.5C2 11.2 3.6 9.3 5.8 9.1C6.4 6.2 8.9 4 12 4C15.6 4 18.6 6.8 18.9 10.4C20.7 10.9 22 12.5 22 14.5C22 16.8 20.2 18 18 18H6Z" stroke="#D3C5F6" stroke-width="2.2" stroke-linejoin="round"/>
+                            </svg>
+                            <span class="testimonials-logo-text">ApexCloud</span>
+                        </div>
+                        <div class="testimonials-logo-item">
+                            <svg class="testimonials-logo-icon" viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="3" width="18" height="18" rx="4" stroke="#C2EC40" stroke-width="2.2"/>
+                                <path d="M8 12L11 15L16 9" stroke="#C2EC40" stroke-width="2.2" stroke-linecap="round"/>
+                            </svg>
+                            <span class="testimonials-logo-text">Quantix</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel of Quotes -->
+                <div class="testimonials-carousel-wrapper" id="testimonialsCarouselWrapper">
+                    <div class="testimonials-carousel" id="testimonialsCarousel">
+                        <div class="testimonials-track" id="testimonialsTrack">
+                            <!-- Slide 1: OrbitPay (Fintech) -->
+                            <div class="testimonials-slide" role="group" aria-roledescription="slide" aria-label="1 of 5">
+                                <div class="testimonial-card">
+                                    <div class="testimonial-top-row">
+                                        <div class="testimonial-service-tag">
+                                            <span>●</span> Fintech &amp; Cross-Platform Mobile
+                                        </div>
+                                        <div class="testimonial-stats-badge">
+                                            <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                            </div>
+                                            <span>+42% User Retention</span>
+                                        </div>
+                                    </div>
+                                    <blockquote class="testimonial-quote">
+                                        “AstraCognix delivered our cross-platform fintech mobile app in record time. Their architectural precision and UI craft exceeded every benchmark. We scaled from zero to 180,000 active users without a single architectural glitch.”
+                                    </blockquote>
+                                    <div class="testimonial-author-row">
+                                        <div class="testimonial-author-info">
+                                            <div class="testimonial-author-avatar">RM</div>
+                                            <div>
+                                                <h3 class="testimonial-author-name">Rajesh Menon</h3>
+                                                <p class="testimonial-author-title">Chief Technology Officer, OrbitPay</p>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-verified-badge">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                                <path d="M20 6L9 17L4 12" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                            <span>Verified Production Client</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2: Veloce Logistics (ERP) -->
+                            <div class="testimonials-slide" role="group" aria-roledescription="slide" aria-label="2 of 5">
+                                <div class="testimonial-card">
+                                    <div class="testimonial-top-row">
+                                        <div class="testimonial-service-tag pink">
+                                            <span>●</span> Enterprise ERP &amp; Cloud Workflows
+                                        </div>
+                                        <div class="testimonial-stats-badge">
+                                            <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                            </div>
+                                            <span>3.5x Faster Operations</span>
+                                        </div>
+                                    </div>
+                                    <blockquote class="testimonial-quote">
+                                        “Their custom ERP system transformed our entire logistics pipeline. Complex multi-depot workflows became clean, intuitive dashboards. AstraCognix turned what used to take 6 months into a flawless 5-week rollout.”
+                                    </blockquote>
+                                    <div class="testimonial-author-row">
+                                        <div class="testimonial-author-info">
+                                            <div class="testimonial-author-avatar pink">SJ</div>
+                                            <div>
+                                                <h3 class="testimonial-author-name">Sarah Jenkins</h3>
+                                                <p class="testimonial-author-title">VP of Engineering, Veloce Logistics</p>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-verified-badge">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                                <path d="M20 6L9 17L4 12" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                            <span>Enterprise Deployment</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 3: SynthAI (AI SaaS) -->
+                            <div class="testimonials-slide" role="group" aria-roledescription="slide" aria-label="3 of 5">
+                                <div class="testimonial-card">
+                                    <div class="testimonial-top-row">
+                                        <div class="testimonial-service-tag yellow">
+                                            <span>●</span> AI / ML Platform &amp; Full-Stack Web
+                                        </div>
+                                        <div class="testimonial-stats-badge">
+                                            <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                            </div>
+                                            <span>$4.2M Seed Round Closed</span>
+                                        </div>
+                                    </div>
+                                    <blockquote class="testimonial-quote">
+                                        “From technical concept to live launch in just 4 weeks. AstraCognix designed and built our AI analytics engine that helped us close our Seed round within 60 days of release. Simply unmatched velocity and engineering grit.”
+                                    </blockquote>
+                                    <div class="testimonial-author-row">
+                                        <div class="testimonial-author-info">
+                                            <div class="testimonial-author-avatar yellow">ER</div>
+                                            <div>
+                                                <h3 class="testimonial-author-name">Dr. Elena Rostova</h3>
+                                                <p class="testimonial-author-title">Co-Founder &amp; CEO, SynthAI</p>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-verified-badge">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                                <path d="M20 6L9 17L4 12" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                            <span>Venture-Backed Startup</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 4: NexaHealth (UI/UX) -->
+                            <div class="testimonials-slide" role="group" aria-roledescription="slide" aria-label="4 of 5">
+                                <div class="testimonial-card">
+                                    <div class="testimonial-top-row">
+                                        <div class="testimonial-service-tag orange">
+                                            <span>●</span> Healthcare Web Portal &amp; UI/UX
+                                        </div>
+                                        <div class="testimonial-stats-badge">
+                                            <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                            </div>
+                                            <span>96% Patient Satisfaction</span>
+                                        </div>
+                                    </div>
+                                    <blockquote class="testimonial-quote">
+                                        “The patient portal redesign by AstraCognix took our satisfaction scores from 72% to 96%. Their meticulous attention to accessibility, HIPAA safety standards, and delightful micro-interactions made all the difference.”
+                                    </blockquote>
+                                    <div class="testimonial-author-row">
+                                        <div class="testimonial-author-info">
+                                            <div class="testimonial-author-avatar orange">AM</div>
+                                            <div>
+                                                <h3 class="testimonial-author-name">Dr. Amitav Mohapatra</h3>
+                                                <p class="testimonial-author-title">Chief Digital Officer, NexaHealth</p>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-verified-badge">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                                <path d="M20 6L9 17L4 12" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                            <span>Healthcare Solution</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 5: ApexCloud (DevOps) -->
+                            <div class="testimonials-slide" role="group" aria-roledescription="slide" aria-label="5 of 5">
+                                <div class="testimonial-card">
+                                    <div class="testimonial-top-row">
+                                        <div class="testimonial-service-tag lavender">
+                                            <span>●</span> Cloud DevOps &amp; Infrastructure
+                                        </div>
+                                        <div class="testimonial-stats-badge">
+                                            <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                            </div>
+                                            <span>99.99% Guaranteed Uptime</span>
+                                        </div>
+                                    </div>
+                                    <blockquote class="testimonial-quote">
+                                        “Working with AstraCognix felt like having our dream team in-house. Zero-downtime cloud migration, automated CI/CD pipelines, and proactive communication. They are our permanent go-to engineering partner.”
+                                    </blockquote>
+                                    <div class="testimonial-author-row">
+                                        <div class="testimonial-author-info">
+                                            <div class="testimonial-author-avatar lavender">MV</div>
+                                            <div>
+                                                <h3 class="testimonial-author-name">Marcus Vance</h3>
+                                                <p class="testimonial-author-title">Head of Cloud Infrastructure, ApexCloud</p>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-verified-badge">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                                <path d="M20 6L9 17L4 12" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                            <span>Cloud Infrastructure</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carousel Controls Row -->
+                    <div class="testimonials-controls-row">
+                        <div class="testimonials-dots-list" id="testimonialsDots" role="tablist" aria-label="Testimonial slides">
+                            <button type="button" class="testimonials-dot is-active" aria-label="Slide 1" role="tab" aria-selected="true"></button>
+                            <button type="button" class="testimonials-dot" aria-label="Slide 2" role="tab" aria-selected="false"></button>
+                            <button type="button" class="testimonials-dot" aria-label="Slide 3" role="tab" aria-selected="false"></button>
+                            <button type="button" class="testimonials-dot" aria-label="Slide 4" role="tab" aria-selected="false"></button>
+                            <button type="button" class="testimonials-dot" aria-label="Slide 5" role="tab" aria-selected="false"></button>
+                        </div>
+                        <div class="testimonials-arrows">
+                            <button type="button" class="testimonials-arrow-btn" id="testimonialsPrevBtn" aria-label="Previous quote">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M15 19l-7-7 7-7"/>
+                                </svg>
+                            </button>
+                            <button type="button" class="testimonials-arrow-btn" id="testimonialsNextBtn" aria-label="Next quote">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Interaction Script -->
+            <script>
+                (function() {
+                    var currentSlide = 0;
+                    var totalSlides = 5;
+                    var track = document.getElementById('testimonialsTrack');
+                    var dots = document.querySelectorAll('#testimonialsDots .testimonials-dot');
+                    var prevBtn = document.getElementById('testimonialsPrevBtn');
+                    var nextBtn = document.getElementById('testimonialsNextBtn');
+                    var wrapper = document.getElementById('testimonialsCarouselWrapper');
+                    var autoPlayTimer = null;
+                    var startX = 0;
+                    var isDragging = false;
+
+                    function goToSlide(idx) {
+                        if (idx < 0) idx = totalSlides - 1;
+                        if (idx >= totalSlides) idx = 0;
+                        currentSlide = idx;
+                        if (track) {
+                            track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+                        }
+                        dots.forEach(function(dot, i) {
+                            if (i === currentSlide) {
+                                dot.classList.add('is-active');
+                                dot.setAttribute('aria-selected', 'true');
+                            } else {
+                                dot.classList.remove('is-active');
+                                dot.setAttribute('aria-selected', 'false');
+                            }
+                        });
+                    }
+
+                    if (nextBtn) {
+                        nextBtn.addEventListener('click', function() {
+                            goToSlide(currentSlide + 1);
+                            resetTimer();
+                        });
+                    }
+
+                    if (prevBtn) {
+                        prevBtn.addEventListener('click', function() {
+                            goToSlide(currentSlide - 1);
+                            resetTimer();
+                        });
+                    }
+
+                    dots.forEach(function(dot, i) {
+                        dot.addEventListener('click', function() {
+                            goToSlide(i);
+                            resetTimer();
+                        });
+                    });
+
+                    // Auto advance every 6 seconds
+                    function startTimer() {
+                        stopTimer();
+                        autoPlayTimer = setInterval(function() {
+                            goToSlide(currentSlide + 1);
+                        }, 6000);
+                    }
+
+                    function stopTimer() {
+                        if (autoPlayTimer) {
+                            clearInterval(autoPlayTimer);
+                            autoPlayTimer = null;
+                        }
+                    }
+
+                    function resetTimer() {
+                        stopTimer();
+                        startTimer();
+                    }
+
+                    if (wrapper) {
+                        wrapper.addEventListener('mouseenter', stopTimer);
+                        wrapper.addEventListener('mouseleave', startTimer);
+
+                        // Touch gestures
+                        wrapper.addEventListener('touchstart', function(e) {
+                            startX = e.touches[0].clientX;
+                            isDragging = true;
+                            stopTimer();
+                        }, { passive: true });
+
+                        wrapper.addEventListener('touchend', function(e) {
+                            if (!isDragging) return;
+                            isDragging = false;
+                            var endX = e.changedTouches[0].clientX;
+                            var diff = startX - endX;
+                            if (Math.abs(diff) > 40) {
+                                if (diff > 0) {
+                                    goToSlide(currentSlide + 1);
+                                } else {
+                                    goToSlide(currentSlide - 1);
+                                }
+                            }
+                            startTimer();
+                        }, { passive: true });
+                    }
+
+                    startTimer();
+                })();
+            </script>
+        </section>
         <section class="section cta">
             <div class="w-layout-blockcontainer container cta w-container">
                 <div class="ta-title-wrapper">
@@ -506,6 +1235,8 @@
                                     class="nav-item"><a href="/services" class="footer-nav-link-block w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>Services</p></span><span class="menu-roll-line"><p>Services</p></span></span></span></a></li>
                                     <li
                                         class="nav-item"><a href="/cases" class="footer-nav-link-block w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>Cases</p></span><span class="menu-roll-line"><p>Cases</p></span></span></span></a></li>
+                                    <li
+                                        class="nav-item"><a href="/#testimonials" data-scroll-to="#testimonials" class="footer-nav-link-block w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>Testimonials</p></span><span class="menu-roll-line"><p>Testimonials</p></span></span></span></a></li>
                                         <li
                                             class="nav-item"><a href="/contact-us" class="footer-nav-link-block w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>Contact us</p></span><span class="menu-roll-line"><p>Contact us</p></span></span></span></a></li>
                         </ul>
@@ -584,6 +1315,10 @@
                             <li class="menu-nav-item">
                                 <a href="/services" data-scroll-to="#services" data-close-modal="menu" class="menu-nav-link btn-bubble w-inline-block">
                                     <p>Services</p><span class="btn-bubble__circle" aria-hidden="true"></span></a>
+                            </li>
+                            <li class="menu-nav-item">
+                                <a href="/#testimonials" data-scroll-to="#testimonials" data-close-modal="menu" class="menu-nav-link btn-bubble w-inline-block">
+                                    <p>Testimonials</p><span class="btn-bubble__circle" aria-hidden="true"></span></a>
                             </li>
                             <li class="menu-nav-item" data-menu-only="band">
                                 <a href="/blog" data-close-modal="menu" class="menu-nav-link btn-bubble w-inline-block">
@@ -1171,6 +1906,19 @@
                     setTimeout(handleHash, 400);
                 });
                 window.addEventListener('hashchange', handleHash);
+
+                document.addEventListener('click', function(e) {
+                    var link = e.target.closest('[data-scroll-to]');
+                    if (link) {
+                        var targetId = link.getAttribute('data-scroll-to');
+                        if (targetId && document.querySelector(targetId)) {
+                            e.preventDefault();
+                            var targetEl = document.querySelector(targetId);
+                            targetEl.scrollIntoView({ behavior: 'smooth' });
+                            history.pushState(null, null, targetId);
+                        }
+                    }
+                });
             })();
         </script>
 </body>

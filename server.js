@@ -100,6 +100,10 @@ app.get(['/about-us', '/about'], (req, res) => {
   res.redirect('/#about');
 });
 
+app.get(['/testimonials', '/reviews'], (req, res) => {
+  res.redirect('/#testimonials');
+});
+
 // Serve static assets from crency.agency with byte ranges enabled
 app.use(express.static(staticDir, {
   dotfiles: 'ignore',
