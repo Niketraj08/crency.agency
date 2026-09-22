@@ -209,7 +209,7 @@
             let a = ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "IS", "LI", "NO", "GB", "CH"],
                 i = ["ad_storage", "ad_user_data", "ad_personalization", "analytics_storage", "functionality_storage", "personalization_storage"],
                 o = e => Object.fromEntries(i.map(t => [t, e])),
-                l = "crency:consent";
+                l = "astracognix:consent";
 
             function c() {
                 try {

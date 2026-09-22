@@ -75,19 +75,29 @@ app.get('/', (req, res) => {
 
 // Dedicated routes for AstraCognix Solutions pages
 app.get('/services', (req, res) => {
+  if (req.query.full) {
+    return serveHtml(res, path.join(staticDir, 'services.html'));
+  }
+  res.redirect('/#services');
+});
+
+app.get('/all-services', (req, res) => {
   serveHtml(res, path.join(staticDir, 'services.html'));
 });
 
 app.get(['/contact-us', '/contact'], (req, res) => {
-  serveHtml(res, path.join(staticDir, 'contact-us.html'));
+  if (req.query.full) {
+    return serveHtml(res, path.join(staticDir, 'contact-us.html'));
+  }
+  res.redirect('/#discuss');
 });
 
 app.get(['/cases', '/portfolio'], (req, res) => {
-  serveHtml(res, path.join(staticDir, 'cases.html'));
+  res.redirect('/#cases');
 });
 
 app.get(['/about-us', '/about'], (req, res) => {
-  serveHtml(res, path.join(staticDir, 'about-us.html'));
+  res.redirect('/#about');
 });
 
 // Serve static assets from crency.agency with byte ranges enabled
