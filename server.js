@@ -55,9 +55,39 @@ function serveHtml(res, filePath) {
   });
 }
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// API route for consultation contact form submissions
+app.post('/api/contact', (req, res) => {
+  const { name, email, phone, service, budget, message } = req.body || {};
+  console.log('[AstraCognix Inquiry]', { name, email, phone, service, budget, message });
+  return res.json({
+    success: true,
+    message: "Thank you for reaching out to AstraCognix Solutions! Our technical leads in Bhubaneswar will contact you within 24 hours."
+  });
+});
+
 // Intercept root page request to inject suppression script
 app.get('/', (req, res) => {
   serveHtml(res, path.join(staticDir, 'index.html'));
+});
+
+// Dedicated routes for AstraCognix Solutions pages
+app.get('/services', (req, res) => {
+  serveHtml(res, path.join(staticDir, 'services.html'));
+});
+
+app.get(['/contact-us', '/contact'], (req, res) => {
+  serveHtml(res, path.join(staticDir, 'contact-us.html'));
+});
+
+app.get(['/cases', '/portfolio'], (req, res) => {
+  serveHtml(res, path.join(staticDir, 'cases.html'));
+});
+
+app.get(['/about-us', '/about'], (req, res) => {
+  serveHtml(res, path.join(staticDir, 'about-us.html'));
 });
 
 // Serve static assets from crency.agency with byte ranges enabled
