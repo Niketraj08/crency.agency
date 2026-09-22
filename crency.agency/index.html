@@ -140,6 +140,7 @@
                     <li
                         class="nav-link-block"><a href="/cases" data-scroll-to="#cases" class="nav-link w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>cases</p></span><span class="menu-roll-line"><p>cases</p></span></span></span></a></li>
                         <li class="nav-link-block"><a href="/services" data-scroll-to="#services" class="nav-link w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>services</p></span><span class="menu-roll-line"><p>services</p></span></span></span></a></li>
+                        <li class="nav-link-block"><a href="/#testimonials" data-scroll-to="#testimonials" class="nav-link w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>testimonials</p></span><span class="menu-roll-line"><p>testimonials</p></span></span></span></a></li>
                         <li
                             class="nav-link-block"><a href="/blog" class="nav-link w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>blog</p></span><span class="menu-roll-line"><p>blog</p></span></span></span></a></li>
                 </ul>
@@ -1230,15 +1231,15 @@
                         <ul role="list" class="footer-nav-list w-list-unstyled">
                             <li class="nav-item"><a href="/" aria-current="page" class="footer-nav-link-block w-inline-block w--current"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>Home</p></span><span class="menu-roll-line"><p>Home</p></span></span></span></a></li>
                             <li
-                                class="nav-item"><a href="/about-us" class="footer-nav-link-block w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>About us</p></span><span class="menu-roll-line"><p>About us</p></span></span></span></a></li>
+                                class="nav-item"><a href="/about-us" data-scroll-to="#about" class="footer-nav-link-block w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>About us</p></span><span class="menu-roll-line"><p>About us</p></span></span></span></a></li>
                                 <li
-                                    class="nav-item"><a href="/services" class="footer-nav-link-block w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>Services</p></span><span class="menu-roll-line"><p>Services</p></span></span></span></a></li>
+                                    class="nav-item"><a href="/services" data-scroll-to="#services" class="footer-nav-link-block w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>Services</p></span><span class="menu-roll-line"><p>Services</p></span></span></span></a></li>
                                     <li
-                                        class="nav-item"><a href="/cases" class="footer-nav-link-block w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>Cases</p></span><span class="menu-roll-line"><p>Cases</p></span></span></span></a></li>
+                                        class="nav-item"><a href="/cases" data-scroll-to="#cases" class="footer-nav-link-block w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>Cases</p></span><span class="menu-roll-line"><p>Cases</p></span></span></span></a></li>
                                     <li
                                         class="nav-item"><a href="/#testimonials" data-scroll-to="#testimonials" class="footer-nav-link-block w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>Testimonials</p></span><span class="menu-roll-line"><p>Testimonials</p></span></span></span></a></li>
                                         <li
-                                            class="nav-item"><a href="/contact-us" class="footer-nav-link-block w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>Contact us</p></span><span class="menu-roll-line"><p>Contact us</p></span></span></span></a></li>
+                                            class="nav-item"><a href="/contact-us" data-open-modal="discuss" class="footer-nav-link-block w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>Contact us</p></span><span class="menu-roll-line"><p>Contact us</p></span></span></span></a></li>
                         </ul>
                     </nav>
                 </div>
@@ -1890,33 +1891,191 @@
         <script>
             self.__next_f.push([1, "2d:\"$67:metadata\"\n"])
         </script>
+        <style>
+            /* Subtle section arrival feedback */
+            @keyframes navArrivalGlow {
+                0% {
+                    box-shadow: 0 0 0 0 rgba(194, 236, 64, 0);
+                    border-color: rgba(211, 197, 246, 0.12);
+                }
+                25% {
+                    box-shadow: 0 0 45px -5px rgba(194, 236, 64, 0.28);
+                    border-color: rgba(194, 236, 64, 0.45);
+                }
+                100% {
+                    box-shadow: 0 0 0 0 rgba(194, 236, 64, 0);
+                    border-color: rgba(211, 197, 246, 0.12);
+                }
+            }
+            .section.nav-scroll-arrived {
+                animation: navArrivalGlow 1.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            }
+        </style>
         <script>
             (function() {
+                var currentScrollRaf = null;
+
+                // Subtle cubic bezier easing: graceful acceleration, silky glide, soft deceleration
+                function easeInOutCubic(t) {
+                    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                }
+
+                function triggerArrivalPolish(element) {
+                    if (!element) return;
+                    element.classList.remove('nav-scroll-arrived');
+                    // Trigger reflow to restart animation cleanly
+                    void element.offsetWidth;
+                    element.classList.add('nav-scroll-arrived');
+                    setTimeout(function() {
+                        element.classList.remove('nav-scroll-arrived');
+                    }, 1700);
+                }
+
+                function subtleSmoothScrollTo(target, userOffset, userDuration) {
+                    var targetEl = typeof target === 'string' ? document.querySelector(target) : target;
+                    if (!targetEl) return;
+
+                    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                    if (prefersReduced) {
+                        targetEl.scrollIntoView();
+                        triggerArrivalPolish(targetEl);
+                        return;
+                    }
+
+                    var offset = typeof userOffset === 'number' ? userOffset : -32;
+
+                    // If Lenis instance is available, leverage it for GSAP ScrollTrigger harmony
+                    var lenis = window.__lenis || window.lenisInstance;
+                    if (lenis && typeof lenis.scrollTo === 'function') {
+                        lenis.scrollTo(targetEl, {
+                            offset: offset,
+                            duration: userDuration || 1.3,
+                            easing: function(t) {
+                                return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+                            },
+                            onComplete: function() {
+                                triggerArrivalPolish(targetEl);
+                            }
+                        });
+                        return;
+                    }
+
+                    // Fallback to high-precision rAF smooth scroller with cubic easing
+                    if (currentScrollRaf) {
+                        cancelAnimationFrame(currentScrollRaf);
+                        currentScrollRaf = null;
+                    }
+
+                    var startY = window.pageYOffset || document.documentElement.scrollTop || 0;
+                    var rect = targetEl.getBoundingClientRect();
+                    var rawTargetY = startY + rect.top + offset;
+                    var maxScroll = Math.max(
+                        document.body.scrollHeight,
+                        document.documentElement.scrollHeight
+                    ) - window.innerHeight;
+                    var destY = Math.max(0, Math.min(rawTargetY, maxScroll));
+                    var distance = destY - startY;
+
+                    if (Math.abs(distance) < 2) {
+                        triggerArrivalPolish(targetEl);
+                        return;
+                    }
+
+                    var duration = userDuration || Math.min(1250, Math.max(750, Math.round(Math.sqrt(Math.abs(distance)) * 26)));
+                    var startTime = null;
+                    var cancelled = false;
+
+                    function cancelScroll() {
+                        cancelled = true;
+                        detachCancelListeners();
+                    }
+
+                    function detachCancelListeners() {
+                        window.removeEventListener('wheel', cancelScroll, { passive: true });
+                        window.removeEventListener('touchmove', cancelScroll, { passive: true });
+                        window.removeEventListener('keydown', cancelScroll, { passive: true });
+                    }
+
+                    window.addEventListener('wheel', cancelScroll, { passive: true, once: true });
+                    window.addEventListener('touchmove', cancelScroll, { passive: true, once: true });
+                    window.addEventListener('keydown', cancelScroll, { passive: true, once: true });
+
+                    function step(now) {
+                        if (cancelled) return;
+                        if (!startTime) startTime = now;
+                        var elapsed = now - startTime;
+                        var progress = Math.min(elapsed / duration, 1);
+                        var ease = easeInOutCubic(progress);
+                        var nextY = startY + distance * ease;
+
+                        window.scrollTo(0, nextY);
+
+                        // Keep GSAP ScrollTrigger updated on each animation frame
+                        if (window.ScrollTrigger && typeof window.ScrollTrigger.update === 'function') {
+                            window.ScrollTrigger.update();
+                        }
+
+                        if (progress < 1) {
+                            currentScrollRaf = requestAnimationFrame(step);
+                        } else {
+                            detachCancelListeners();
+                            currentScrollRaf = null;
+                            triggerArrivalPolish(targetEl);
+                        }
+                    }
+
+                    currentScrollRaf = requestAnimationFrame(step);
+                }
+
                 function handleHash() {
                     var h = window.location.hash;
                     if (h === '#discuss') {
                         var btn = document.querySelector('[data-open-modal="discuss"]');
                         if (btn) btn.click();
                     } else if (h && document.querySelector(h)) {
-                        var el = document.querySelector(h);
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                        subtleSmoothScrollTo(h, -32, 1.2);
                     }
                 }
+
                 window.addEventListener('load', function() {
-                    setTimeout(handleHash, 400);
+                    setTimeout(handleHash, 450);
                 });
                 window.addEventListener('hashchange', handleHash);
 
+                // Universal data-scroll-to link handler
                 document.addEventListener('click', function(e) {
                     var link = e.target.closest('[data-scroll-to]');
-                    if (link) {
-                        var targetId = link.getAttribute('data-scroll-to');
-                        if (targetId && document.querySelector(targetId)) {
-                            e.preventDefault();
-                            var targetEl = document.querySelector(targetId);
-                            targetEl.scrollIntoView({ behavior: 'smooth' });
-                            history.pushState(null, null, targetId);
+                    if (!link) return;
+
+                    var targetId = link.getAttribute('data-scroll-to');
+                    if (!targetId) return;
+
+                    var targetEl = document.querySelector(targetId);
+                    if (!targetEl) return;
+
+                    e.preventDefault();
+
+                    // If inside or triggers modal close (e.g. mobile navigation menu)
+                    var modal = link.closest('[role="dialog"]');
+                    var hasCloseAttr = link.hasAttribute('data-close-modal');
+
+                    if (modal || hasCloseAttr) {
+                        var closeBtn = document.querySelector('[data-close-modal="menu"]');
+                        if (closeBtn && modal && modal.classList.contains('is-open')) {
+                            closeBtn.click();
                         }
+                        setTimeout(function() {
+                            subtleSmoothScrollTo(targetEl, -32, 1.3);
+                        }, 140);
+                    } else {
+                        subtleSmoothScrollTo(targetEl, -32, 1.3);
+                    }
+
+                    // Update URL hash cleanly without standard jarring jump
+                    if (history.pushState) {
+                        history.pushState(null, null, targetId);
+                    } else {
+                        window.location.hash = targetId;
                     }
                 });
             })();

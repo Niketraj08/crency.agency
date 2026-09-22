@@ -407,7 +407,8 @@
                                         infinite: !1,
                                         autoRaf: !0
                                     });
-                                    r.push(() => o.destroy());
+                                    window.__lenis = o, window.lenisInstance = o;
+                                    r.push(() => { o.destroy(), window.__lenis = null, window.lenisInstance = null; });
                                     let i = (0, c.I)();
                                     r.push(() => i.destroy());
                                     let d = !1,
@@ -449,13 +450,17 @@
                                                     }
                                                 })))
                                             })(r.dataset.openModal || "", r);
-                                            let n = t.closest("[data-close-modal]");
-                                            if (n) return void x(n.closest('[role="dialog"]'));
-                                            let a = t.closest("[data-scroll-to]");
-                                            if (a) {
+                                            let n = t.closest("[data-close-modal]"),
+                                                a = t.closest("[data-scroll-to]");
+                                            if (n && x(n.closest('[role="dialog"]')), a) {
                                                 let e = document.querySelector(a.dataset.scrollTo || "");
-                                                e && o.scrollTo(e)
+                                                if (e) {
+                                                    let t = () => o.scrollTo(e, { offset: -30, duration: 1.25 });
+                                                    n ? setTimeout(t, 120) : t();
+                                                }
+                                                return;
                                             }
+                                            if (n) return;
                                         },
                                         L = e => {
                                             "Escape" === e.key && x(document.querySelector("[aria-modal].is-open"))
