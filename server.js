@@ -87,7 +87,7 @@ app.get(['/about-us', '/about-us.html', '/about'], (req, res) => {
 });
 
 app.get(['/cases', '/cases.html', '/portfolio', '/portfolio.html'], (req, res) => {
-  serveHtml(res, path.join(staticDir, 'cases.html'));
+  res.redirect('/#cases');
 });
 
 app.get(['/blog', '/blog.html', '/blogs'], (req, res) => {
@@ -106,7 +106,8 @@ app.get('/blog/:slug', (req, res) => {
 
 // Direct route for individual case studies
 app.get('/cases/:slug', (req, res) => {
-  serveHtml(res, path.join(staticDir, 'cases.html'));
+  const cleanSlug = req.params.slug.replace(/\.html$/, '');
+  res.redirect(`/#case-${cleanSlug}`);
 });
 
 // Serve static assets from crency.agency with byte ranges enabled
