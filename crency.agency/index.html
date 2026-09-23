@@ -2080,6 +2080,223 @@
                 });
             })();
         </script>
+
+    <!-- Dynamic Case Study Viewer Modal for Homepage -->
+    <div id="case-study-modal" class="cs-modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" style="position:fixed;inset:0;background:rgba(10,3,25,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.3s cubic-bezier(0.16,1,0.3,1);">
+        <div class="cs-modal-window" style="background:#1B0B3F;border:1px solid rgba(211,197,246,0.22);box-shadow:0 32px 80px rgba(0,0,0,0.7),0 0 0 1px rgba(194,236,64,0.15);border-radius:28px;width:100%;max-width:860px;max-height:90vh;overflow-y:auto;position:relative;transform:scale(0.94) translateY(20px);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);color:#fff;font-family:sans-serif;">
+            <button type="button" class="cs-modal-close" id="home-modal-close-btn" aria-label="Close modal" style="position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;background:rgba(21,7,52,0.85);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:26px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s ease;z-index:10;">×</button>
+            <div class="cs-modal-header" style="position:relative;height:300px;background:#0E0426;overflow:hidden;border-radius:28px 28px 0 0;">
+                <img id="home-modal-img" src="" alt="Case Study Image" style="width:100%;height:100%;object-fit:cover;" />
+                <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(21,7,52,0.2) 0%, rgba(27,11,63,0.95) 100%);"></div>
+            </div>
+            <div class="cs-modal-content" style="padding:32px 36px 40px;">
+                <div id="home-modal-client" style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#F04C8A;margin-bottom:6px;"></div>
+                <h2 id="home-modal-title" style="font-size:clamp(24px,4vw,34px);font-weight:900;color:#fff;line-height:1.2;margin:0 0 16px;"></h2>
+                <div id="home-modal-tagline" style="font-size:16px;color:#C2EC40;font-weight:600;line-height:1.5;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.1);"></div>
+                
+                <div style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#A59BC7;margin-bottom:12px;">Architecture & Project Overview</div>
+                <p id="home-modal-desc" style="font-size:15px;color:#DACCF5;line-height:1.7;margin-bottom:24px;"></p>
+                
+                <div style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#A59BC7;margin-bottom:12px;">Core Results & Metric Gains</div>
+                <div id="home-modal-metrics" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;padding:18px;border-radius:16px;background:rgba(194,236,64,0.06);border:1px solid rgba(194,236,64,0.2);margin-bottom:28px;"></div>
+                
+                <div style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#A59BC7;margin-bottom:12px;">Key Engineering Deliverables</div>
+                <div id="home-modal-deliverables" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:28px;"></div>
+                
+                <div style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#A59BC7;margin-bottom:12px;">Technologies Deployed</div>
+                <div id="home-modal-tags" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;"></div>
+                
+                <div style="display:flex;gap:14px;flex-wrap:wrap;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);">
+                    <a href="/cases" style="flex:1;min-width:200px;padding:15px 22px;border-radius:9999px;text-align:center;font-weight:800;font-size:14px;text-decoration:none;background:#C2EC40;color:#150734;">Explore All Case Studies →</a>
+                    <a href="/contact-us" style="flex:1;min-width:200px;padding:15px 22px;border-radius:9999px;text-align:center;font-weight:800;font-size:14px;text-decoration:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#fff;">Discuss Your Project →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            var caseMap = {
+                "marsec": {
+                    title: "Marsec — Compliance-Ready Stablecoin & Web3 Ecosystem",
+                    client: "Web3 & Financial Technology",
+                    img: "/wf/cases/marsec-portrait.webp",
+                    tagline: "High-security financial landing platform with real-time compliance telemetry, audit verifications, and interactive token mechanics.",
+                    desc: "AstraCognix Solutions engineered a high-trust digital platform for Marsec, facilitating compliance disclosures and real-time liquidity reporting. Integrated interactive 3D WebGL components, institutional audit verification badges, and rapid multi-region static distribution.",
+                    metrics: [
+                        { num: "5.0", lbl: "Client Upwork Rating" },
+                        { num: "100%", lbl: "Audit Compliance" },
+                        { num: "< 800ms", lbl: "Asset Load Time" },
+                        { num: "Zero", lbl: "Security Anomalies" }
+                    ],
+                    deliverables: [
+                        "Interactive Web3 architecture & tokenomics dashboard",
+                        "Real-time regulatory compliance disclosure system",
+                        "Micro-animations with GPU-accelerated shaders",
+                        "Decentralized identity & institutional audit integration"
+                    ],
+                    tags: ["Webflow Development", "WebGL", "TypeScript", "Web3 Telemetry", "FinTech Security"]
+                },
+                "imperium-completions": {
+                    title: "Imperium Completions — Aerospace & Industrial 3D Showcase",
+                    client: "Aerospace & Advanced Engineering",
+                    img: "/wf/cases/imperium-completions-portrait.webp",
+                    tagline: "Immersive industrial web experience showcasing complex engineering services with 3D product visualization.",
+                    desc: "Engineered for high-value industrial manufacturing and completions, this platform converts technical specifications into interactive visual stories. Combines custom Webflow development with high-fidelity asset rendering and conversion-driven inquiry funnels.",
+                    metrics: [
+                        { num: "4.9", lbl: "Client Upwork Rating" },
+                        { num: "+65%", lbl: "Enterprise Inquiries" },
+                        { num: "3 Weeks", lbl: "Strategy to Production" },
+                        { num: "60 FPS", lbl: "Scroll Fluidity" }
+                    ],
+                    deliverables: [
+                        "Custom industrial design system & high-contrast dark theme",
+                        "Interactive technical service configurator",
+                        "Optimized 3D asset delivery pipeline",
+                        "Direct RFQ (Request for Quote) pipeline integration"
+                    ],
+                    tags: ["Webflow CMS", "GSAP Animation", "Enterprise UI/UX", "SEO Optimization"]
+                },
+                "dein-sitz": {
+                    title: "Dein Sitz — Munich Premium Workspace & Virtual Office Platform",
+                    client: "Commercial Real Estate & SaaS",
+                    img: "/wf/cases/dein-sitz-portrait.webp",
+                    tagline: "High-converting German digital platform for prestigious commercial address registration and flexible workspace bookings.",
+                    desc: "Designed and deployed for the German commercial real estate market, Dein Sitz required localized legal compliance (Impressum/Datenschutz), streamlined multi-tier pricing calculators, and immediate booking funnels with integrated SEPA & credit card payment handling.",
+                    metrics: [
+                        { num: "5.0", lbl: "Client Upwork Rating" },
+                        { num: "+48%", lbl: "Conversion Lift" },
+                        { num: "99/100", lbl: "Mobile Usability" },
+                        { num: "Top 3", lbl: "Munich Local SEO Rank" }
+                    ],
+                    deliverables: [
+                        "Multi-tier virtual office subscription configurator",
+                        "Fully GDPR & German legal compliance setup",
+                        "Custom interactive map of Munich business district locations",
+                        "Integrated customer onboarding and verification flow"
+                    ],
+                    tags: ["Webflow Development", "Conversion Rate Optimization", "German Market SEO", "Stripe Billing"]
+                },
+                "hikemind": {
+                    title: "HikeMind — Brand, Data & AI Intelligence Platform",
+                    client: "AI & Data Analytics",
+                    img: "/wf/cases/hikemind-portrait.webp",
+                    tagline: "Modern minimalist digital platform bridging enterprise brand strategy with predictive AI models.",
+                    desc: "HikeMind required an ultra-modern aesthetic that communicates sophisticated artificial intelligence capabilities without corporate clutter. AstraCognix Solutions crafted a distinctive typographic hierarchy, custom wireframe aesthetics, and dynamic case presentation modules.",
+                    metrics: [
+                        { num: "4.8", lbl: "Client Upwork Rating" },
+                        { num: "3.2x", lbl: "Average Session Duration" },
+                        { num: "< 1s", lbl: "LCP Benchmark" },
+                        { num: "100%", lbl: "Custom Typography" }
+                    ],
+                    deliverables: [
+                        "Bespoke wireframe mountain & data-stream visual motifs",
+                        "Interactive case study showcases & client proof modules",
+                        "Micro-interaction choreography using GSAP",
+                        "Fast edge delivery on international CDN"
+                    ],
+                    tags: ["Webflow Development", "GSAP", "AI Branding", "Custom Shaders"]
+                }
+            };
+
+            var modal = document.getElementById("case-study-modal");
+            var closeBtn = document.getElementById("home-modal-close-btn");
+
+            function openModal(slug) {
+                var data = caseMap[slug];
+                if (!data) {
+                    window.location.href = "/cases";
+                    return;
+                }
+
+                document.getElementById("home-modal-img").src = data.img;
+                document.getElementById("home-modal-img").alt = data.title;
+                document.getElementById("home-modal-client").textContent = data.client;
+                document.getElementById("home-modal-title").textContent = data.title;
+                document.getElementById("home-modal-tagline").textContent = data.tagline;
+                document.getElementById("home-modal-desc").textContent = data.desc;
+
+                var metricsEl = document.getElementById("home-modal-metrics");
+                metricsEl.innerHTML = "";
+                data.metrics.forEach(function(m) {
+                    var div = document.createElement("div");
+                    div.style.cssText = "background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px 16px;";
+                    div.innerHTML = "<div style="font-size:26px;font-weight:900;color:#C2EC40;line-height:1;margin-bottom:4px;">" + m.num + "</div><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#BDB4D8;">" + m.lbl + "</div>";
+                    metricsEl.appendChild(div);
+                });
+
+                var delEl = document.getElementById("home-modal-deliverables");
+                delEl.innerHTML = "";
+                data.deliverables.forEach(function(item) {
+                    var div = document.createElement("div");
+                    div.style.cssText = "background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px 14px;font-size:13px;color:#fff;display:flex;align-items:center;gap:8px;";
+                    div.innerHTML = "<span style="color:#C2EC40;font-weight:900;">✓</span> " + item;
+                    delEl.appendChild(div);
+                });
+
+                var tagsEl = document.getElementById("home-modal-tags");
+                tagsEl.innerHTML = "";
+                data.tags.forEach(function(tag) {
+                    var span = document.createElement("span");
+                    span.style.cssText = "font-size:12px;font-weight:700;padding:5px 12px;border-radius:9999px;background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.12);";
+                    span.textContent = tag;
+                    tagsEl.appendChild(span);
+                });
+
+                modal.style.opacity = "1";
+                modal.style.pointerEvents = "auto";
+                var modalWin = modal.querySelector(".cs-modal-window");
+                if (modalWin) {
+                    modalWin.style.transform = "scale(1) translateY(0)";
+                }
+                modal.setAttribute("aria-hidden", "false");
+                document.body.style.overflow = "hidden";
+            }
+
+            function closeModal() {
+                modal.style.opacity = "0";
+                modal.style.pointerEvents = "none";
+                var modalWin = modal.querySelector(".cs-modal-window");
+                if (modalWin) {
+                    modalWin.style.transform = "scale(0.94) translateY(20px)";
+                }
+                modal.setAttribute("aria-hidden", "true");
+                document.body.style.overflow = "";
+            }
+
+            if (closeBtn) closeBtn.addEventListener("click", closeModal);
+
+            modal.addEventListener("click", function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener("keydown", function(e) {
+                if (e.key === "Escape" && modal.getAttribute("aria-hidden") === "false") {
+                    closeModal();
+                }
+            });
+
+            // Delegate click on all .cases-link elements
+            document.addEventListener("click", function(e) {
+                var target = e.target.closest(".cases-link");
+                if (!target) return;
+
+                var href = target.getAttribute("href") || "";
+                var slugMatch = href.match(/\/cases\/([^\/\?#]+)/);
+                if (slugMatch && slugMatch[1] && caseMap[slugMatch[1]]) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openModal(slugMatch[1]);
+                } else if (href === "/cases" || href.indexOf("/cases") === 0) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.location.href = "/cases";
+                }
+            }, true);
+        })();
+    </script>
 </body>
 
 </html>

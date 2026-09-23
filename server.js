@@ -93,7 +93,8 @@ app.get(['/contact-us', '/contact'], (req, res) => {
 });
 
 app.get(['/cases', '/portfolio'], (req, res) => {
-  res.redirect('/#cases');
+  // Serve the comprehensive portfolio & case studies showcase page
+  serveHtml(res, path.join(staticDir, 'cases.html'));
 });
 
 app.get(['/about-us', '/about'], (req, res) => {
