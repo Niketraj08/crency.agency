@@ -2081,10 +2081,11 @@
             })();
         </script>
 
+    
     <!-- Dynamic Case Study Viewer Modal for Homepage -->
     <div id="case-study-modal" class="cs-modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" style="position:fixed;inset:0;background:rgba(10,3,25,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.3s cubic-bezier(0.16,1,0.3,1);">
         <div class="cs-modal-window" style="background:#1B0B3F;border:1px solid rgba(211,197,246,0.22);box-shadow:0 32px 80px rgba(0,0,0,0.7),0 0 0 1px rgba(194,236,64,0.15);border-radius:28px;width:100%;max-width:860px;max-height:90vh;overflow-y:auto;position:relative;transform:scale(0.94) translateY(20px);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);color:#fff;font-family:sans-serif;">
-            <button type="button" class="cs-modal-close" id="home-modal-close-btn" aria-label="Close modal" style="position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;background:rgba(21,7,52,0.85);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:26px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s ease;z-index:10;">×</button>
+            <button type="button" class="cs-modal-close" id="home-modal-close-btn" aria-label="Close modal" style="position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;background:rgba(21,7,52,0.85);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:26px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s ease;z-index:10;">&times;</button>
             <div class="cs-modal-header" style="position:relative;height:300px;background:#0E0426;overflow:hidden;border-radius:28px 28px 0 0;">
                 <img id="home-modal-img" src="" alt="Case Study Image" style="width:100%;height:100%;object-fit:cover;" />
                 <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(21,7,52,0.2) 0%, rgba(27,11,63,0.95) 100%);"></div>
@@ -2107,8 +2108,8 @@
                 <div id="home-modal-tags" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;"></div>
                 
                 <div style="display:flex;gap:14px;flex-wrap:wrap;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);">
-                    <a href="/cases" style="flex:1;min-width:200px;padding:15px 22px;border-radius:9999px;text-align:center;font-weight:800;font-size:14px;text-decoration:none;background:#C2EC40;color:#150734;">Explore All Case Studies →</a>
-                    <a href="/contact-us" style="flex:1;min-width:200px;padding:15px 22px;border-radius:9999px;text-align:center;font-weight:800;font-size:14px;text-decoration:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#fff;">Discuss Your Project →</a>
+                    <a href="/cases" style="flex:1;min-width:200px;padding:15px 22px;border-radius:9999px;text-align:center;font-weight:800;font-size:14px;text-decoration:none;background:#C2EC40;color:#150734;">Explore All Case Studies &rarr;</a>
+                    <a href="/contact-us" style="flex:1;min-width:200px;padding:15px 22px;border-radius:9999px;text-align:center;font-weight:800;font-size:14px;text-decoration:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#fff;">Discuss Your Project &rarr;</a>
                 </div>
             </div>
         </div>
@@ -2117,7 +2118,7 @@
     <script>
         (function() {
             var caseMap = {
-                "marsec": {
+                marsec: {
                     title: "Marsec — Compliance-Ready Stablecoin & Web3 Ecosystem",
                     client: "Web3 & Financial Technology",
                     img: "/wf/cases/marsec-portrait.webp",
@@ -2177,7 +2178,7 @@
                     ],
                     tags: ["Webflow Development", "Conversion Rate Optimization", "German Market SEO", "Stripe Billing"]
                 },
-                "hikemind": {
+                hikemind: {
                     title: "HikeMind — Brand, Data & AI Intelligence Platform",
                     client: "AI & Data Analytics",
                     img: "/wf/cases/hikemind-portrait.webp",
@@ -2221,7 +2222,14 @@
                 data.metrics.forEach(function(m) {
                     var div = document.createElement("div");
                     div.style.cssText = "background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px 16px;";
-                    div.innerHTML = "<div style="font-size:26px;font-weight:900;color:#C2EC40;line-height:1;margin-bottom:4px;">" + m.num + "</div><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#BDB4D8;">" + m.lbl + "</div>";
+                    var numDiv = document.createElement("div");
+                    numDiv.style.cssText = "font-size:26px;font-weight:900;color:#C2EC40;line-height:1;margin-bottom:4px;";
+                    numDiv.textContent = m.num;
+                    var lblDiv = document.createElement("div");
+                    lblDiv.style.cssText = "font-size:11px;font-weight:700;text-transform:uppercase;color:#BDB4D8;";
+                    lblDiv.textContent = m.lbl;
+                    div.appendChild(numDiv);
+                    div.appendChild(lblDiv);
                     metricsEl.appendChild(div);
                 });
 
@@ -2230,7 +2238,11 @@
                 data.deliverables.forEach(function(item) {
                     var div = document.createElement("div");
                     div.style.cssText = "background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px 14px;font-size:13px;color:#fff;display:flex;align-items:center;gap:8px;";
-                    div.innerHTML = "<span style="color:#C2EC40;font-weight:900;">✓</span> " + item;
+                    var mark = document.createElement("span");
+                    mark.style.cssText = "color:#C2EC40;font-weight:900;";
+                    mark.textContent = "\u2713";
+                    div.appendChild(mark);
+                    div.appendChild(document.createTextNode(" " + item));
                     delEl.appendChild(div);
                 });
 
@@ -2298,5 +2310,5 @@
         })();
     </script>
 </body>
-
 </html>
+
