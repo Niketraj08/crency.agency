@@ -1,0 +1,191 @@
+[
+  {
+    "slug": "accessible-by-default",
+    "title": "Website Accessibility Is a Conversion Feature",
+    "desc": "Sold as legal risk, accessibility gets postponed forever. Sold as the work that makes a site usable on a bad phone in bright sun, it gets done.",
+    "date": "2026-08-16",
+    "category": "Webflow & CMS"
+  },
+  {
+    "slug": "agency-or-freelancer",
+    "title": "Web Design Agency vs Freelancer: How to Choose",
+    "desc": "Not about quality — the best freelancers beat most agencies. It is about what happens when someone is ill, and how much of the project you are willing to manage yourself.",
+    "date": "2026-09-10",
+    "category": "Strategy & CRO"
+  },
+  {
+    "slug": "beyond-webflow",
+    "title": "Webflow Limitations: When to Move to a Custom Build",
+    "desc": "We build in Webflow, and this is the post about when not to. Four ceilings the platform has, the hybrid that usually works, and how to tell.",
+    "date": "2026-08-16",
+    "category": "Architecture & Code"
+  },
+  {
+    "slug": "briefs-that-work",
+    "title": "How to Brief a Web Agency",
+    "desc": "Most briefs are a page count and a deadline. The five things that actually change a quote are none of that, plus a template you can copy.",
+    "date": "2026-08-16",
+    "category": "Strategy & CRO"
+  },
+  {
+    "slug": "building-trust",
+    "title": "Construction Company Website Design That Wins Work",
+    "desc": "Construction is bought on risk, not on price. What a builder&#x27;s site has to prove in the first screen, and why the gallery everyone leads with is the weakest thing on the page.",
+    "date": "2026-09-10",
+    "category": "Design & Trust"
+  },
+  {
+    "slug": "called-not-browsed",
+    "title": "Home Services Website Design: Built for the Call",
+    "desc": "Home services are bought in a hurry, on a phone, by someone with a problem. What that removes from the page, and the three things that have to be visible before any scrolling.",
+    "date": "2026-09-10",
+    "category": "Strategy & CRO"
+  },
+  {
+    "slug": "choosing-an-agency",
+    "title": "How to Choose a Web Design Agency",
+    "desc": "Portfolios all look the same because everyone shows their best work. Six questions that separate agencies, and the three answers that should end a conversation.",
+    "date": "2026-09-10",
+    "category": "Strategy & CRO"
+  },
+  {
+    "slug": "collections-over-pages",
+    "title": "Webflow CMS: When a Collection Beats a Static Page",
+    "desc": "The one question that decides whether content should be a Webflow collection or a static page, what it costs up front, and where it pays off.",
+    "date": "2026-08-16",
+    "category": "Webflow & CMS"
+  },
+  {
+    "slug": "custom-crm",
+    "title": "Custom CRM vs Off-the-Shelf: How to Decide",
+    "desc": "The honest default is buy, and most teams asking for a custom CRM want a working one. The three cases where building genuinely wins, and the hybrid that usually beats both.",
+    "date": "2026-08-30",
+    "category": "Architecture & Code"
+  },
+  {
+    "slug": "custom-or-platform",
+    "title": "Custom Website Development: When It Is Worth It",
+    "desc": "Most marketing sites should not be custom-built, and we say so before quoting one. The four cases where a Next.js build genuinely pays, and what it costs you to own.",
+    "date": "2026-08-30",
+    "category": "Architecture & Code"
+  },
+  {
+    "slug": "figma-to-webflow",
+    "title": "Figma to Webflow: What Transfers, What You Rebuild",
+    "desc": "Which parts of a Figma file map straight onto Webflow, which have no equivalent and get rebuilt by hand, and the handoff details that save a week on the build.",
+    "date": "2026-08-16",
+    "category": "Webflow & CMS"
+  },
+  {
+    "slug": "handover",
+    "title": "Webflow Site Handover: What You Should Own",
+    "desc": "The most expensive thing in this industry is a site nobody can access. What handover has to include, who should own each account, and the question to ask before signing.",
+    "date": "2026-09-10",
+    "category": "Webflow & CMS"
+  },
+  {
+    "slug": "heroes-decide",
+    "title": "Hero Section Best Practices: 5 Seconds",
+    "desc": "A hero has one job, and it is not to look good. What belongs above the fold, why writing at the objection beats writing around it, and what to cut.",
+    "date": "2026-08-16",
+    "category": "Design & Trust"
+  },
+  {
+    "slug": "hiring-webflow",
+    "title": "Hiring a Webflow Developer: What to Check",
+    "desc": "A buyer&#x27;s checklist for hiring a Webflow developer, the five things to ask for, what “custom” should actually mean, and the red flags worth walking away from.",
+    "date": "2026-08-16",
+    "category": "Webflow & CMS"
+  },
+  {
+    "slug": "keeping-the-rankings",
+    "title": "Does Migrating to Webflow Hurt SEO?",
+    "desc": "Platform changes do not cost rankings. Changing addresses without telling anyone does. What actually moves the needle, what the dip means, and how long it lasts.",
+    "date": "2026-09-10",
+    "category": "Strategy & CRO"
+  },
+  {
+    "slug": "landing-or-site",
+    "title": "Landing Page vs Website: Which You Need",
+    "desc": "One question decides whether you need a landing page or a full site, plus how to build a landing page that can become a site instead of being replaced by one.",
+    "date": "2026-08-16",
+    "category": "Strategy & CRO"
+  },
+  {
+    "slug": "launch-checklist",
+    "title": "Website Launch Checklist: What to Check Before and After",
+    "desc": "Launches rarely fail on the design. They fail on redirects, forms and analytics — three things nobody looks at until a week later. What to check, in order.",
+    "date": "2026-09-10",
+    "category": "Architecture & Code"
+  },
+  {
+    "slug": "life-after-plugins",
+    "title": "WordPress Plugins and Their Webflow Equivalents",
+    "desc": "Fourteen plugins is the average, and most of them exist to patch WordPress rather than to serve your business. What is built in, what needs a tool, and what genuinely has no answer.",
+    "date": "2026-09-10",
+    "category": "Webflow & CMS"
+  },
+  {
+    "slug": "migration-cost",
+    "title": "WordPress to Webflow Migration Cost: What Sets It",
+    "desc": "Moving platforms is priced by page count and by how much of the old site deserves to survive. What each part costs, and the line item everyone forgets until traffic drops.",
+    "date": "2026-09-10",
+    "category": "Strategy & CRO"
+  },
+  {
+    "slug": "mobile-app-cost",
+    "title": "Mobile App Development Cost: What Sets the Number",
+    "desc": "What actually moves the number on a mobile app, why most businesses asking for one need a website, and the cost that does not start until the day you launch.",
+    "date": "2026-08-30",
+    "category": "Architecture & Code"
+  },
+  {
+    "slug": "motion-that-sells",
+    "title": "Website Animation: What Sells, and What Just Delays",
+    "desc": "Animation is the fastest way to look expensive and the fastest way to feel cheap. The line between them is whether the movement carries information.",
+    "date": "2026-08-16",
+    "category": "Design & Trust"
+  },
+  {
+    "slug": "not-a-template",
+    "title": "Custom Website Design vs a Template: What You Buy",
+    "desc": "A template is a set of decisions made for a different business. What that costs, when it genuinely does not matter, and the trap nobody warns you about.",
+    "date": "2026-08-30",
+    "category": "Design & Trust"
+  },
+  {
+    "slug": "nothing-improvised",
+    "title": "Fintech Website Design: Designing for Regulated Trust",
+    "desc": "Financial products are bought on the absence of doubt. What that demands of type, spacing and copy, and why the usual startup homepage actively works against it.",
+    "date": "2026-09-10",
+    "category": "Design & Trust"
+  },
+  {
+    "slug": "one-page-one-job",
+    "title": "Landing Page Structure: One Page, One Job",
+    "desc": "Every extra choice on a page is a chance to choose nothing. How to count a page&#x27;s exits, when a single-CTA page wins, and when it is the wrong answer.",
+    "date": "2026-08-16",
+    "category": "Strategy & CRO"
+  },
+  {
+    "slug": "proof-that-converts",
+    "title": "Social Proof That Converts: What to Show, and Where",
+    "desc": "Most proof sits where it is convenient rather than where the doubt is. How to match each piece to the objection it answers, and what to leave out.",
+    "date": "2026-08-16",
+    "category": "Strategy & CRO"
+  },
+  {
+    "slug": "property-online",
+    "title": "Real Estate Website Design: What Actually Converts",
+    "desc": "Property sites lose people at the same three places. What a listing page owes a buyer, why the search box is not the hero, and the one number that decides the whole layout.",
+    "date": "2026-09-10",
+    "category": "Design & Trust"
+  },
+  {
+    "slug": "quiet-exits",
+    "title": "Why Visitors Leave Your Website",
+    "desc": "Analytics tells you which page they left, never which sentence lost them. Four usual exits, and the three events worth instrumenting first.",
+    "date": "2026-08-16",
+    "category": "Strategy & CRO"
+  }
+]

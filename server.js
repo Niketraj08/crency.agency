@@ -74,35 +74,39 @@ app.get('/', (req, res) => {
 });
 
 // Dedicated routes for AstraCognix Solutions pages
-app.get('/services', (req, res) => {
-  if (req.query.full) {
-    return serveHtml(res, path.join(staticDir, 'services.html'));
-  }
-  res.redirect('/#services');
-});
-
-app.get('/all-services', (req, res) => {
+app.get(['/services', '/services.html', '/all-services'], (req, res) => {
   serveHtml(res, path.join(staticDir, 'services.html'));
 });
 
-app.get(['/contact-us', '/contact'], (req, res) => {
-  if (req.query.full) {
-    return serveHtml(res, path.join(staticDir, 'contact-us.html'));
-  }
-  res.redirect('/#discuss');
+app.get(['/contact-us', '/contact-us.html', '/contact'], (req, res) => {
+  serveHtml(res, path.join(staticDir, 'contact-us.html'));
 });
 
-app.get(['/cases', '/portfolio'], (req, res) => {
-  // Serve the comprehensive portfolio & case studies showcase page
+app.get(['/about-us', '/about-us.html', '/about'], (req, res) => {
+  serveHtml(res, path.join(staticDir, 'about-us.html'));
+});
+
+app.get(['/cases', '/cases.html', '/portfolio', '/portfolio.html'], (req, res) => {
   serveHtml(res, path.join(staticDir, 'cases.html'));
 });
 
-app.get(['/about-us', '/about'], (req, res) => {
-  res.redirect('/#about');
+app.get(['/blog', '/blog.html', '/blogs'], (req, res) => {
+  serveHtml(res, path.join(staticDir, 'blog.html'));
 });
 
-app.get(['/testimonials', '/reviews'], (req, res) => {
-  res.redirect('/#testimonials');
+// Direct route for individual blog articles
+app.get('/blog/:slug', (req, res) => {
+  const cleanSlug = req.params.slug.replace(/\.html$/, '');
+  const blogFile = path.join(staticDir, 'blog', cleanSlug + '.html');
+  if (fs.existsSync(blogFile)) {
+    return serveHtml(res, blogFile);
+  }
+  serveHtml(res, path.join(staticDir, 'blog.html'));
+});
+
+// Direct route for individual case studies
+app.get('/cases/:slug', (req, res) => {
+  serveHtml(res, path.join(staticDir, 'cases.html'));
 });
 
 // Serve static assets from crency.agency with byte ranges enabled

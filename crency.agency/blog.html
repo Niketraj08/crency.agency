@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#150734">
+<head>
+    <meta charSet="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/_next/static/css/d6f2727d3c4d31a9.css" data-precedence="next" />
+    <link rel="stylesheet" href="/_next/static/css/d1f6c89666f79493.css" data-precedence="next" />
+    <link rel="preload" href="/fonts/Thunder-VF-s1.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/fonts/IBMPlexSans-VF-s1.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/fonts/NauryzRedKeds-s1.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <meta name="color-scheme" content="dark" />
+    <title>Blog & Tech Insights — AstraCognix Solutions</title>
+    <meta name="description" content="Technical architecture, Webflow guides, custom software engineering, and CRO insights from AstraCognix Solutions." />
+    <link rel="canonical" href="https://astracognixsolutions.in/blog" />
+    <meta property="og:title" content="Blog & Tech Insights — AstraCognix Solutions" />
+    <meta property="og:description" content="Technical architecture, Webflow guides, custom software engineering, and CRO insights from AstraCognix Solutions." />
+    <meta property="og:url" content="https://astracognixsolutions.in/blog" />
+    <meta property="og:site_name" content="AstraCognix Solutions" />
+    <meta property="og:image" content="/ASC_logo_-removebg-preview.png" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16" />
+    <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #150734;
+        color: #fff;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        overflow-x: hidden;
+      }
+      a { text-decoration: none; color: inherit; }
+      
+      .blog-hero {
+        padding: 140px 24px 50px;
+        max-width: 1280px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .blog-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 18px;
+        border-radius: 9999px;
+        background: rgba(194,236,64,0.12);
+        border: 1px solid rgba(194,236,64,0.3);
+        color: #C2EC40;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 24px;
+      }
+      .blog-badge-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #C2EC40;
+        box-shadow: 0 0 10px #C2EC40;
+      }
+      .blog-main-heading {
+        font-size: clamp(38px, 6vw, 76px);
+        font-weight: 900;
+        line-height: 1.05;
+        color: #fff;
+        margin-bottom: 20px;
+      }
+      .blog-main-heading span.pink { color: #F04C8A; }
+      .blog-main-heading span.lime { color: #C2EC40; }
+      .blog-subheading {
+        font-size: clamp(16px, 2vw, 20px);
+        color: #BDB4D8;
+        max-width: 780px;
+        margin: 0 auto 40px;
+        line-height: 1.6;
+      }
+      
+      .blog-controls {
+        max-width: 1280px;
+        margin: 0 auto 50px;
+        padding: 0 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      .blog-search-box {
+        width: 100%;
+        max-width: 520px;
+        position: relative;
+      }
+      .blog-search-input {
+        width: 100%;
+        padding: 14px 20px 14px 44px;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 9999px;
+        color: #fff;
+        font-size: 15px;
+        outline: none;
+        transition: all 0.25s ease;
+        box-sizing: border-box;
+      }
+      .blog-search-input:focus {
+        background: rgba(255,255,255,0.1);
+        border-color: #C2EC40;
+        box-shadow: 0 0 15px rgba(194,236,64,0.25);
+      }
+      .blog-search-icon {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #9F92C7;
+        pointer-events: none;
+      }
+      .blog-filter-bar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+      .blog-filter-btn {
+        padding: 9px 20px;
+        border-radius: 9999px;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.04);
+        color: #E0DBF5;
+      }
+      .blog-filter-btn:hover {
+        background: rgba(255,255,255,0.12);
+        color: #fff;
+        border-color: rgba(255,255,255,0.25);
+      }
+      .blog-filter-btn.active {
+        background: #F04C8A;
+        color: #fff;
+        border-color: #F04C8A;
+        box-shadow: 0 4px 18px rgba(240,76,138,0.35);
+      }
+      
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+        gap: 28px;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px 100px;
+      }
+      @media(max-width: 768px) {
+        .blog-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      
+      .blog-card {
+        background: #1B0B3F;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 24px;
+        padding: 32px 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+      }
+      .blog-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(211,197,246,0.3);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      }
+      .blog-card-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+      }
+      .blog-cat-badge {
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #C2EC40;
+        background: rgba(194,236,64,0.1);
+        border: 1px solid rgba(194,236,64,0.25);
+        padding: 4px 12px;
+        border-radius: 9999px;
+      }
+      .blog-date {
+        font-size: 12px;
+        color: #9F92C7;
+        font-weight: 600;
+      }
+      .blog-title {
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 1.3;
+        color: #fff;
+        margin: 0 0 14px;
+        transition: color 0.2s ease;
+      }
+      .blog-title a:hover {
+        color: #F04C8A;
+      }
+      .blog-desc {
+        font-size: 14px;
+        color: #BDB4D8;
+        line-height: 1.65;
+        margin: 0 0 24px;
+        flex-grow: 1;
+      }
+      .blog-footer {
+        border-top: 1px solid rgba(255,255,255,0.08);
+        padding-top: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .blog-read-link {
+        font-size: 14px;
+        font-weight: 700;
+        color: #C2EC40;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: gap 0.2s ease, color 0.2s ease;
+      }
+      .blog-read-link:hover {
+        color: #fff;
+        gap: 10px;
+      }
+      
+      .blog-cta-banner {
+        max-width: 1280px;
+        margin: 0 auto 100px;
+        padding: 0 24px;
+      }
+      .blog-cta-inner {
+        background: linear-gradient(135deg, rgba(240,76,138,0.18) 0%, rgba(194,236,64,0.12) 100%), #1B0B3F;
+        border: 1px solid rgba(255,255,255,0.16);
+        border-radius: 32px;
+        padding: 60px 40px;
+        text-align: center;
+      }
+      .blog-cta-title {
+        font-size: clamp(28px, 4vw, 44px);
+        font-weight: 900;
+        color: #fff;
+        margin: 0 0 16px;
+      }
+      .blog-cta-p {
+        font-size: 17px;
+        color: #DACCF5;
+        max-width: 600px;
+        margin: 0 auto 32px;
+        line-height: 1.6;
+      }
+      .blog-cta-btn {
+        display: inline-block;
+        background: #C2EC40;
+        color: #150734;
+        font-size: 15px;
+        font-weight: 800;
+        padding: 16px 36px;
+        border-radius: 9999px;
+        transition: all 0.25s ease;
+      }
+      .blog-cta-btn:hover {
+        background: #d4f75f;
+        transform: scale(1.04);
+        box-shadow: 0 10px 30px rgba(194,236,64,0.3);
+      }
+    </style>
+</head>
+<body class="body">
+    <!-- Header -->
+    <header data-wf--header--variant="anothers-page" class="section header">
+        <div class="w-layout-blockcontainer container header w-container">
+            <nav data-hero-dec="0.5" class="header-nav">
+                <a href="/" aria-label="AstraCognix Solutions home" class="logo-link w-inline-block">
+                    <img src="/wf/logo-crn.svg" loading="lazy" width="76" height="31" alt="AstraCognix Solutions home" class="header-logo"/>
+                </a>
+                <ul role="list" class="header-nav-block w-list-unstyled">
+                    <li class="nav-link-block"><a href="/" class="nav-link w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p class="paragraph">home</p></span><span class="menu-roll-line"><p class="paragraph">home</p></span></span></span></a></li>
+                    <li class="nav-link-block"><a href="/about-us" class="nav-link w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p class="paragraph">about us</p></span><span class="menu-roll-line"><p class="paragraph">about us</p></span></span></span></a></li>
+                    <li class="nav-link-block"><a href="/services" class="nav-link w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>services</p></span><span class="menu-roll-line"><p>services</p></span></span></span></a></li>
+                    <li class="nav-link-block"><a href="/cases" class="nav-link w-inline-block"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>portfolio</p></span><span class="menu-roll-line"><p>portfolio</p></span></span></span></a></li>
+                    <li class="nav-link-block"><a href="/blog" aria-current="page" class="nav-link w-inline-block w--current"><span class="menu-roll"><span class="menu-roll-stack"><span class="menu-roll-line"><p>blog</p></span><span class="menu-roll-line"><p>blog</p></span></span></span></a></li>
+                </ul>
+                <div class="header-bg w-embed">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 538 52" preserveAspectRatio="none" fill="none"><path d="M0.728516 7.54645C0.728516 3.78087 5.08731 0.728271 10.4642 0.728271H499.927C502.439 0.728271 504.855 1.40821 506.667 2.62599L533.732 20.8078C537.727 23.4916 537.727 27.965 533.732 30.6487L506.667 48.8305C504.855 50.0483 502.439 50.7283 499.927 50.7283H10.4642C5.08733 50.7283 0.728516 47.6757 0.728516 43.9101V7.54645Z" fill="#D3C5F6" fill-opacity="0.12" stroke="white" stroke-opacity="0.1" stroke-width="1.45654"></path></svg>
+                </div>
+            </nav>
+            <a data-hero-dec="0.5" href="/contact-us" class="contact-us-button btn-bubble w-inline-block">
+                <p>let&#x27;s talk</p><span class="btn-bubble__circle" aria-hidden="true"></span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="blog-hero">
+            <div class="blog-badge">
+                <span class="blog-badge-dot"></span>
+                <span>Engineering & Strategic Knowledge Base</span>
+            </div>
+            <h1 class="blog-main-heading">Insights, <span class="pink">Code</span> & <span class="lime">Growth</span></h1>
+            <p class="blog-subheading">
+                Practical analysis on Webflow architecture, custom Next.js engineering, conversion optimization, and high-stakes web development from our senior engineering team.
+            </p>
+        </section>
+
+        <section class="blog-controls">
+            <div class="blog-search-box">
+                <svg class="blog-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="blog-search" class="blog-search-input" placeholder="Search 27 technical guides & articles..." />
+            </div>
+            <div class="blog-filter-bar">
+                <button class="blog-filter-btn active" data-filter="all">All Articles (27)</button>
+                <button class="blog-filter-btn" data-filter="Webflow & CMS">Webflow & CMS</button>
+                <button class="blog-filter-btn" data-filter="Architecture & Code">Architecture & Code</button>
+                <button class="blog-filter-btn" data-filter="Strategy & CRO">Strategy & CRO</button>
+                <button class="blog-filter-btn" data-filter="Design & Trust">Design & Trust</button>
+            </div>
+        </section>
+
+        <section class="blog-grid" id="blog-container">
+            
+    <article class="blog-card" data-category="Webflow & CMS">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Webflow & CMS</span>
+        <span class="blog-date">2026-08-16</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/accessible-by-default">Website Accessibility Is a Conversion Feature</a>
+      </h2>
+      <p class="blog-desc">Sold as legal risk, accessibility gets postponed forever. Sold as the work that makes a site usable on a bad phone in bright sun, it gets done.</p>
+      <div class="blog-footer">
+        <a href="/blog/accessible-by-default" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Strategy & CRO">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Strategy & CRO</span>
+        <span class="blog-date">2026-09-10</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/agency-or-freelancer">Web Design Agency vs Freelancer: How to Choose</a>
+      </h2>
+      <p class="blog-desc">Not about quality — the best freelancers beat most agencies. It is about what happens when someone is ill, and how much of the project you are willing to manage yourself.</p>
+      <div class="blog-footer">
+        <a href="/blog/agency-or-freelancer" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Architecture & Code">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Architecture & Code</span>
+        <span class="blog-date">2026-08-16</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/beyond-webflow">Webflow Limitations: When to Move to a Custom Build</a>
+      </h2>
+      <p class="blog-desc">We build in Webflow, and this is the post about when not to. Four ceilings the platform has, the hybrid that usually works, and how to tell.</p>
+      <div class="blog-footer">
+        <a href="/blog/beyond-webflow" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Strategy & CRO">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Strategy & CRO</span>
+        <span class="blog-date">2026-08-16</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/briefs-that-work">How to Brief a Web Agency</a>
+      </h2>
+      <p class="blog-desc">Most briefs are a page count and a deadline. The five things that actually change a quote are none of that, plus a template you can copy.</p>
+      <div class="blog-footer">
+        <a href="/blog/briefs-that-work" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Design & Trust">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Design & Trust</span>
+        <span class="blog-date">2026-09-10</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/building-trust">Construction Company Website Design That Wins Work</a>
+      </h2>
+      <p class="blog-desc">Construction is bought on risk, not on price. What a builder&#x27;s site has to prove in the first screen, and why the gallery everyone leads with is the weakest thing on the page.</p>
+      <div class="blog-footer">
+        <a href="/blog/building-trust" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Strategy & CRO">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Strategy & CRO</span>
+        <span class="blog-date">2026-09-10</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/called-not-browsed">Home Services Website Design: Built for the Call</a>
+      </h2>
+      <p class="blog-desc">Home services are bought in a hurry, on a phone, by someone with a problem. What that removes from the page, and the three things that have to be visible before any scrolling.</p>
+      <div class="blog-footer">
+        <a href="/blog/called-not-browsed" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Strategy & CRO">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Strategy & CRO</span>
+        <span class="blog-date">2026-09-10</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/choosing-an-agency">How to Choose a Web Design Agency</a>
+      </h2>
+      <p class="blog-desc">Portfolios all look the same because everyone shows their best work. Six questions that separate agencies, and the three answers that should end a conversation.</p>
+      <div class="blog-footer">
+        <a href="/blog/choosing-an-agency" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Webflow & CMS">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Webflow & CMS</span>
+        <span class="blog-date">2026-08-16</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/collections-over-pages">Webflow CMS: When a Collection Beats a Static Page</a>
+      </h2>
+      <p class="blog-desc">The one question that decides whether content should be a Webflow collection or a static page, what it costs up front, and where it pays off.</p>
+      <div class="blog-footer">
+        <a href="/blog/collections-over-pages" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Architecture & Code">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Architecture & Code</span>
+        <span class="blog-date">2026-08-30</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/custom-crm">Custom CRM vs Off-the-Shelf: How to Decide</a>
+      </h2>
+      <p class="blog-desc">The honest default is buy, and most teams asking for a custom CRM want a working one. The three cases where building genuinely wins, and the hybrid that usually beats both.</p>
+      <div class="blog-footer">
+        <a href="/blog/custom-crm" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Architecture & Code">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Architecture & Code</span>
+        <span class="blog-date">2026-08-30</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/custom-or-platform">Custom Website Development: When It Is Worth It</a>
+      </h2>
+      <p class="blog-desc">Most marketing sites should not be custom-built, and we say so before quoting one. The four cases where a Next.js build genuinely pays, and what it costs you to own.</p>
+      <div class="blog-footer">
+        <a href="/blog/custom-or-platform" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Webflow & CMS">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Webflow & CMS</span>
+        <span class="blog-date">2026-08-16</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/figma-to-webflow">Figma to Webflow: What Transfers, What You Rebuild</a>
+      </h2>
+      <p class="blog-desc">Which parts of a Figma file map straight onto Webflow, which have no equivalent and get rebuilt by hand, and the handoff details that save a week on the build.</p>
+      <div class="blog-footer">
+        <a href="/blog/figma-to-webflow" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Webflow & CMS">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Webflow & CMS</span>
+        <span class="blog-date">2026-09-10</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/handover">Webflow Site Handover: What You Should Own</a>
+      </h2>
+      <p class="blog-desc">The most expensive thing in this industry is a site nobody can access. What handover has to include, who should own each account, and the question to ask before signing.</p>
+      <div class="blog-footer">
+        <a href="/blog/handover" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Design & Trust">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Design & Trust</span>
+        <span class="blog-date">2026-08-16</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/heroes-decide">Hero Section Best Practices: 5 Seconds</a>
+      </h2>
+      <p class="blog-desc">A hero has one job, and it is not to look good. What belongs above the fold, why writing at the objection beats writing around it, and what to cut.</p>
+      <div class="blog-footer">
+        <a href="/blog/heroes-decide" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Webflow & CMS">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Webflow & CMS</span>
+        <span class="blog-date">2026-08-16</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/hiring-webflow">Hiring a Webflow Developer: What to Check</a>
+      </h2>
+      <p class="blog-desc">A buyer&#x27;s checklist for hiring a Webflow developer, the five things to ask for, what “custom” should actually mean, and the red flags worth walking away from.</p>
+      <div class="blog-footer">
+        <a href="/blog/hiring-webflow" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Strategy & CRO">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Strategy & CRO</span>
+        <span class="blog-date">2026-09-10</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/keeping-the-rankings">Does Migrating to Webflow Hurt SEO?</a>
+      </h2>
+      <p class="blog-desc">Platform changes do not cost rankings. Changing addresses without telling anyone does. What actually moves the needle, what the dip means, and how long it lasts.</p>
+      <div class="blog-footer">
+        <a href="/blog/keeping-the-rankings" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Strategy & CRO">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Strategy & CRO</span>
+        <span class="blog-date">2026-08-16</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/landing-or-site">Landing Page vs Website: Which You Need</a>
+      </h2>
+      <p class="blog-desc">One question decides whether you need a landing page or a full site, plus how to build a landing page that can become a site instead of being replaced by one.</p>
+      <div class="blog-footer">
+        <a href="/blog/landing-or-site" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Architecture & Code">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Architecture & Code</span>
+        <span class="blog-date">2026-09-10</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/launch-checklist">Website Launch Checklist: What to Check Before and After</a>
+      </h2>
+      <p class="blog-desc">Launches rarely fail on the design. They fail on redirects, forms and analytics — three things nobody looks at until a week later. What to check, in order.</p>
+      <div class="blog-footer">
+        <a href="/blog/launch-checklist" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Webflow & CMS">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Webflow & CMS</span>
+        <span class="blog-date">2026-09-10</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/life-after-plugins">WordPress Plugins and Their Webflow Equivalents</a>
+      </h2>
+      <p class="blog-desc">Fourteen plugins is the average, and most of them exist to patch WordPress rather than to serve your business. What is built in, what needs a tool, and what genuinely has no answer.</p>
+      <div class="blog-footer">
+        <a href="/blog/life-after-plugins" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Strategy & CRO">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Strategy & CRO</span>
+        <span class="blog-date">2026-09-10</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/migration-cost">WordPress to Webflow Migration Cost: What Sets It</a>
+      </h2>
+      <p class="blog-desc">Moving platforms is priced by page count and by how much of the old site deserves to survive. What each part costs, and the line item everyone forgets until traffic drops.</p>
+      <div class="blog-footer">
+        <a href="/blog/migration-cost" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Architecture & Code">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Architecture & Code</span>
+        <span class="blog-date">2026-08-30</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/mobile-app-cost">Mobile App Development Cost: What Sets the Number</a>
+      </h2>
+      <p class="blog-desc">What actually moves the number on a mobile app, why most businesses asking for one need a website, and the cost that does not start until the day you launch.</p>
+      <div class="blog-footer">
+        <a href="/blog/mobile-app-cost" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Design & Trust">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Design & Trust</span>
+        <span class="blog-date">2026-08-16</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/motion-that-sells">Website Animation: What Sells, and What Just Delays</a>
+      </h2>
+      <p class="blog-desc">Animation is the fastest way to look expensive and the fastest way to feel cheap. The line between them is whether the movement carries information.</p>
+      <div class="blog-footer">
+        <a href="/blog/motion-that-sells" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Design & Trust">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Design & Trust</span>
+        <span class="blog-date">2026-08-30</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/not-a-template">Custom Website Design vs a Template: What You Buy</a>
+      </h2>
+      <p class="blog-desc">A template is a set of decisions made for a different business. What that costs, when it genuinely does not matter, and the trap nobody warns you about.</p>
+      <div class="blog-footer">
+        <a href="/blog/not-a-template" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Design & Trust">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Design & Trust</span>
+        <span class="blog-date">2026-09-10</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/nothing-improvised">Fintech Website Design: Designing for Regulated Trust</a>
+      </h2>
+      <p class="blog-desc">Financial products are bought on the absence of doubt. What that demands of type, spacing and copy, and why the usual startup homepage actively works against it.</p>
+      <div class="blog-footer">
+        <a href="/blog/nothing-improvised" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Strategy & CRO">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Strategy & CRO</span>
+        <span class="blog-date">2026-08-16</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/one-page-one-job">Landing Page Structure: One Page, One Job</a>
+      </h2>
+      <p class="blog-desc">Every extra choice on a page is a chance to choose nothing. How to count a page&#x27;s exits, when a single-CTA page wins, and when it is the wrong answer.</p>
+      <div class="blog-footer">
+        <a href="/blog/one-page-one-job" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Strategy & CRO">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Strategy & CRO</span>
+        <span class="blog-date">2026-08-16</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/proof-that-converts">Social Proof That Converts: What to Show, and Where</a>
+      </h2>
+      <p class="blog-desc">Most proof sits where it is convenient rather than where the doubt is. How to match each piece to the objection it answers, and what to leave out.</p>
+      <div class="blog-footer">
+        <a href="/blog/proof-that-converts" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Design & Trust">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Design & Trust</span>
+        <span class="blog-date">2026-09-10</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/property-online">Real Estate Website Design: What Actually Converts</a>
+      </h2>
+      <p class="blog-desc">Property sites lose people at the same three places. What a listing page owes a buyer, why the search box is not the hero, and the one number that decides the whole layout.</p>
+      <div class="blog-footer">
+        <a href="/blog/property-online" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+
+    <article class="blog-card" data-category="Strategy & CRO">
+      <div class="blog-card-top">
+        <span class="blog-cat-badge">Strategy & CRO</span>
+        <span class="blog-date">2026-08-16</span>
+      </div>
+      <h2 class="blog-title">
+        <a href="/blog/quiet-exits">Why Visitors Leave Your Website</a>
+      </h2>
+      <p class="blog-desc">Analytics tells you which page they left, never which sentence lost them. Four usual exits, and the three events worth instrumenting first.</p>
+      <div class="blog-footer">
+        <a href="/blog/quiet-exits" class="blog-read-link">
+          Read Guide <span class="arr">&rarr;</span>
+        </a>
+      </div>
+    </article>
+  
+        </section>
+
+        <section class="blog-cta-banner">
+            <div class="blog-cta-inner">
+                <h2 class="blog-cta-title">Need custom software or a high-converting web platform?</h2>
+                <p class="blog-cta-p">Schedule an architectural consultation with AstraCognix Solutions today. We build production-ready digital products within 3 weeks.</p>
+                <a href="/contact-us" class="blog-cta-btn">Book Architecture Consultation &rarr;</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="section footer" style="padding: 60px 24px 40px; border-top: 1px solid rgba(255,255,255,0.08); background: #0E0426;">
+        <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px;">
+            <div>
+                <a href="/" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                    <img src="/wf/logo-crn.svg" width="76" height="31" alt="AstraCognix Solutions" />
+                </a>
+                <p style="color: #BDB4D8; font-size: 14px; margin: 0;">&copy; 2017&ndash;2026 AstraCognix Solutions Pvt. Ltd. All rights reserved.</p>
+            </div>
+            <div style="display: flex; gap: 24px; flex-wrap: wrap; font-size: 14px; font-weight: 700;">
+                <a href="/" style="color: #E0DBF5; transition: color 0.2s;">Home</a>
+                <a href="/about-us" style="color: #E0DBF5; transition: color 0.2s;">About Us</a>
+                <a href="/services" style="color: #E0DBF5; transition: color 0.2s;">Services</a>
+                <a href="/cases" style="color: #E0DBF5; transition: color 0.2s;">Portfolio</a>
+                <a href="/blog" style="color: #C2EC40; transition: color 0.2s;">Blog</a>
+                <a href="/contact-us" style="color: #E0DBF5; transition: color 0.2s;">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            var searchInput = document.getElementById("blog-search");
+            var filterBtns = document.querySelectorAll(".blog-filter-btn");
+            var cards = document.querySelectorAll(".blog-card");
+
+            var currentFilter = "all";
+            var searchQuery = "";
+
+            function applyFilters() {
+                cards.forEach(function(card) {
+                    var cardCategory = card.getAttribute("data-category");
+                    var title = card.querySelector(".blog-title").textContent.toLowerCase();
+                    var desc = card.querySelector(".blog-desc").textContent.toLowerCase();
+
+                    var matchesFilter = (currentFilter === "all") || (cardCategory === currentFilter);
+                    var matchesSearch = !searchQuery || title.indexOf(searchQuery) !== -1 || desc.indexOf(searchQuery) !== -1;
+
+                    if (matchesFilter && matchesSearch) {
+                        card.style.display = "flex";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+            }
+
+            filterBtns.forEach(function(btn) {
+                btn.addEventListener("click", function() {
+                    filterBtns.forEach(function(b) { b.classList.remove("active"); });
+                    btn.classList.add("active");
+                    currentFilter = btn.getAttribute("data-filter");
+                    applyFilters();
+                });
+            });
+
+            if (searchInput) {
+                searchInput.addEventListener("input", function(e) {
+                    searchQuery = e.target.value.toLowerCase().trim();
+                    applyFilters();
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
